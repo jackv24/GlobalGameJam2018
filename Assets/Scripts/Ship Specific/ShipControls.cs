@@ -12,12 +12,18 @@ public class ShipControls : Controllable
     private ResourceBank resourceBank;
 
     private ShipGun powerWeapon;
+    private float lastPingTime;
 
     private Vector2 lookVector;
 
     [SerializeField]
     [Range(0, 10)]
     private float impulseMagnitude = 3;
+
+    [SerializeField]
+    [Range(1, 30)]
+    [Tooltip("Time in seconds between Transmission Pings")]
+    private float transmissionPingCooldown = 5;
 
     [SerializeField]
     private ShipGun defaultWeapon;
@@ -68,12 +74,12 @@ public class ShipControls : Controllable
     {
         switch (collider.transform.tag)
         {
-            case "resource":
+            case "Resource":
 
                 CollectResource(collider.transform);
                 break;
 
-            case "weapon":
+            case "ShipGun":
 
                 CollectWeapon(collider.transform);
                 break;
@@ -100,9 +106,11 @@ public class ShipControls : Controllable
     /// </summary>
     public override void Jump(ButtonState buttonState)
     {
-        if (buttonState == ButtonState.WasPressed)
+        if (buttonState == ButtonState.WasPressed
+            && Time.time - lastPingTime >= transmissionPingCooldown)
         {
-            // TODO: Ping that shit
+            // TODO: Ping
+            lastPingTime = Time.time;
         }
     }
 
@@ -123,9 +131,4 @@ public class ShipControls : Controllable
         }
     }
     #endregion
-
-    private void OnGUI()
-    {
-        GUILayout.Label("Look vector: " + lookVector.ToString());
-    }
 }
