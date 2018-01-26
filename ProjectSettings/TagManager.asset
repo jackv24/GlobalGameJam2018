@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - PlatformerPlayer
+  - PlatformerPickup
+  - PlatformerProjectile
+  - ShipPlayer
+  - ShipPickup
+  - ShipProjectile
   - 
   - 
   - 
