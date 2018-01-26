@@ -16,14 +16,13 @@ public class ShipHealth : MonoBehaviour, IShipDamageable
 
     [SerializeField]
     [Range(1, 100)]
-    private int startingHealthValue;
-
-    
+    private int maxHealth;
+    public int MaxHealth { get { return maxHealth; } }
     #endregion
 
     private void Awake()
     {
-        currentHealth = startingHealthValue;
+        currentHealth = maxHealth;
     }
 
     private void Die()
