@@ -7,7 +7,7 @@ public class ShipGunData : ScriptableObject
 {
     public GameObject ShotPrefab;
 
-    public float Damage;
+    public int Damage;
 
     [Tooltip("Fire Rate in Rounds Per Minute")]
     public float FireRate;

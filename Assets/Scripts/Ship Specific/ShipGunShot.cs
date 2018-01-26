@@ -20,7 +20,7 @@ public class ShipGunShot : MonoBehaviour
     
     public Vector2 Position { set { transform.position = value; } }
     public Vector2 Direction { get; set; }
-    public float Damage { get; set; }
+    public int Damage { get; set; }
 
     private void Awake()
     {
