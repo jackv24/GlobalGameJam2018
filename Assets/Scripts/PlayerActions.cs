@@ -71,10 +71,10 @@ public class PlayerActions : PlayerActionSet
         Up.AddDefaultBinding(InputControlType.LeftStickUp);
         Down.AddDefaultBinding(InputControlType.LeftStickDown);
 
-        AltLeft.AddDefaultBinding(InputControlType.LeftStickLeft);
-        AltRight.AddDefaultBinding(InputControlType.LeftStickRight);
-        AltUp.AddDefaultBinding(InputControlType.LeftStickUp);
-        AltDown.AddDefaultBinding(InputControlType.LeftStickDown);
+        AltLeft.AddDefaultBinding(InputControlType.RightStickLeft);
+        AltRight.AddDefaultBinding(InputControlType.RightStickRight);
+        AltUp.AddDefaultBinding(InputControlType.RightStickUp);
+        AltDown.AddDefaultBinding(InputControlType.RightStickDown);
 
         Jump.AddDefaultBinding(InputControlType.Action1);
         Shoot.AddDefaultBinding(InputControlType.RightTrigger);
