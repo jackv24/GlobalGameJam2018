@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -16,6 +17,7 @@ public class ShipControls : Controllable
     #region Fields & Properties
     private new Rigidbody2D rigidbody2D;
     private ResourceBank resourceBank;
+    private ShipResourceGlowEffect glowEffect;
 
     private new Collider2D collider;
 
@@ -61,6 +63,13 @@ public class ShipControls : Controllable
 
         this.collider = GetComponent<Collider2D>();
         this.enemyPings = new Dictionary<ShipControls, Vector2>();
+    }
+
+    private void Start()
+    {
+        // Commence hacky shit to get glow post processor
+        PlayerInput inputScript = GetComponentInParent<PlayerInput>();
+        glowEffect = inputScript.cameraRender.GetComponent<ShipResourceGlowEffect>();
     }
 
     #region Collision Detection
@@ -135,14 +144,9 @@ public class ShipControls : Controllable
         {
             int resourcesInRange = Physics2D.OverlapCircleNonAlloc(transform.position, transmissionPingResourceRadius, pingResourceCache);
 
-            if (resourcesInRange > 0)
-            {
-                for (int i = 0; i < resourcesInRange; i++)
-                {
-                    // TODO: Do something with 
-                    // pingResourceCache[i]
-                }
-            }
+            glowEffect.ResourceCount = resourcesInRange;
+            glowEffect.ResourcePositions = pingResourceCache.Select(resource => (Vector2)resource.transform.position).ToArray();
+
 
             // Raise ping event
             if (OnTransmissionPing != null)
