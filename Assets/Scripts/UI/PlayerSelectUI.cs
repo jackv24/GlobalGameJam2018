@@ -15,6 +15,7 @@ public class PlayerSelectUI : MonoBehaviour
     private int currentStartPanel = 0;
 
     private List<InputDevice> boundDevices = new List<InputDevice>();
+    private bool addedKeyboard = false;
 
     private void Start()
     {
@@ -23,8 +24,30 @@ public class PlayerSelectUI : MonoBehaviour
 
     private void Update()
     {
+        if(addedKeyboard)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                GameManager.Instance.SpawnPlayers();
+
+                gameObject.SetActive(false);
+            }
+        }
+        else if (boundDevices.Count > 0)
+        {
+            if (boundDevices[0].CommandWasPressed)
+            {
+                GameManager.Instance.SpawnPlayers();
+
+                gameObject.SetActive(false);
+            }
+        }
+        
+
         if (currentStartPanel < startPanels.Length)
         {
+            bool bound = false;
+
             if (InputManager.ActiveDevice.AnyButtonWasPressed)
             {
                 InputDevice device = InputManager.ActiveDevice;
@@ -35,23 +58,25 @@ public class PlayerSelectUI : MonoBehaviour
 
                     GameManager.Instance.AddPlayerControl(device);
 
-                    startPanels[currentStartPanel].SetSelected(true);
-
-                    if (currentStartPanel < startPanels.Length - 1)
-                        startPanels[currentStartPanel + 1].ShowPrompt(true);
-
-                    currentStartPanel++;
+                    bound = true;
                 }
             }
-        }
-
-        if(boundDevices.Count > 0)
-        {
-            if(boundDevices[0].CommandWasPressed)
+            else if(!addedKeyboard && Input.anyKeyDown)
             {
-                GameManager.Instance.SpawnPlayers();
+                GameManager.Instance.AddPlayerControl(null);
 
-                gameObject.SetActive(false);
+                addedKeyboard = true;
+                bound = true;
+            }
+
+            if(bound)
+            {
+                startPanels[currentStartPanel].SetSelected(true);
+
+                if (currentStartPanel < startPanels.Length - 1)
+                    startPanels[currentStartPanel + 1].ShowPrompt(true);
+
+                currentStartPanel++;
             }
         }
     }

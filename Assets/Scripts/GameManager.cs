@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviour
     public void AddPlayerControl(InputDevice device)
     {
         PlayerActions actions = new PlayerActions();
-        actions.SetupBindings(false);
+        actions.SetupBindings(device == null);
 
-        actions.IncludeDevices.Add(device);
+        if (device != null)
+            actions.IncludeDevices.Add(device);
 
         playerControls.Add(actions);
     }
