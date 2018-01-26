@@ -59,10 +59,6 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        //TEMPORARY
-        if (Input.GetKeyDown(KeyCode.G))
-            SwitchMode();
-
         if(controlling != null && playerActions != null)
         {
             Vector2 moveInput = playerActions.Move.Vector;
