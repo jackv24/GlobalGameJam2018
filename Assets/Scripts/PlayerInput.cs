@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public Controllable controlling;
+    public GameObject platformerPrefab;
+    public GameObject shipPrefab;
+
+    private Controllable controlling;
 
     [HideInInspector]
     public Transform followTarget;
@@ -13,9 +16,29 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        GameObject obj = new GameObject("Follow Target");
-        followTarget = obj.transform;
-        followTarget.transform.SetParent(transform);
+        {
+            GameObject obj = new GameObject("Follow Target");
+            followTarget = obj.transform;
+            followTarget.transform.SetParent(transform);
+        }
+
+        if(platformerPrefab)
+        {
+            GameObject obj = Instantiate(platformerPrefab);
+            obj.transform.SetParent(transform);
+            obj.name = platformerPrefab.name;
+
+            controlling = obj.GetComponent<Controllable>();
+        }
+
+        if(shipPrefab)
+        {
+            GameObject obj = Instantiate(shipPrefab);
+            obj.transform.SetParent(transform);
+            obj.name = shipPrefab.name;
+
+            controlling = obj.GetComponent<Controllable>();
+        }
     }
 
     private void Start()
