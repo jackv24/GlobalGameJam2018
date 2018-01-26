@@ -13,6 +13,7 @@ public class ShipGun : MonoBehaviour
 
     public void Shoot(Vector2 origin, Vector2 direction)
     {
+        Debug.DrawRay(origin, direction * 10);
         Debug.Log(string.Format("Firing from {0} in direction {1}", origin.ToString(), direction.ToString()));
     }
 }
