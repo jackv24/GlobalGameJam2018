@@ -22,8 +22,8 @@ TagManager:
   - ShipPlayer
   - ShipPickup
   - ShipProjectile
-  - 
-  - 
+  - PlatformerEffect
+  - ShipEffects
   - 
   - 
   - 

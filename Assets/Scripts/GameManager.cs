@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
                     follow.target = playerInput.followTarget;
 
                 playerInput.SetPlayerActions(playerControls[i]);
+
+                playerInput.cameraRender = cameraObj.GetComponent<SetRenderLayers>();
             }
 
             SplitScreenSetup splitScreen = cameraObj.GetComponent<SplitScreenSetup>();

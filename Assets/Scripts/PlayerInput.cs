@@ -7,7 +7,13 @@ public class PlayerInput : MonoBehaviour
     public GameObject platformerPrefab;
     public GameObject shipPrefab;
 
+    private GameObject platformerObj;
+    private GameObject shipObj;
+
     private Controllable controlling;
+    private bool inShip;
+
+    public SetRenderLayers cameraRender;
 
     [HideInInspector]
     public Transform followTarget;
@@ -24,19 +30,18 @@ public class PlayerInput : MonoBehaviour
 
         if(platformerPrefab)
         {
-            GameObject obj = Instantiate(platformerPrefab, transform);
-            obj.name = platformerPrefab.name;
+            platformerObj = Instantiate(platformerPrefab, transform);
+            platformerObj.name = platformerPrefab.name;
 
-            controlling = obj.GetComponent<Controllable>();
+            controlling = platformerObj.GetComponent<Controllable>();
         }
 
         if(shipPrefab)
         {
-            GameObject obj = Instantiate(shipPrefab, transform);
-            obj.name = shipPrefab.name;
-
-            controlling = obj.GetComponent<Controllable>();
+            shipObj = Instantiate(shipPrefab, transform);
+            shipObj.name = shipPrefab.name;
         }
+
     }
 
     private void Start()
@@ -47,10 +52,17 @@ public class PlayerInput : MonoBehaviour
             playerActions = new PlayerActions();
             playerActions.SetupBindings(true);
         }
+
+        inShip = false;
+        SwitchMode();
     }
 
     private void Update()
     {
+        //TEMPORARY
+        if (Input.GetKeyDown(KeyCode.G))
+            SwitchMode();
+
         if(controlling != null && playerActions != null)
         {
             Vector2 moveInput = playerActions.Move.Vector;
@@ -85,5 +97,26 @@ public class PlayerInput : MonoBehaviour
     public void SetPlayerActions(PlayerActions actions)
     {
         playerActions = actions;
+    }
+
+    public void SwitchMode()
+    {
+        inShip = !inShip;
+
+        if (controlling)
+            controlling.Move(Vector2.zero);
+
+        if(inShip)
+        {
+            controlling = shipObj.GetComponent<Controllable>();
+
+            cameraRender.SetRenderShip();
+        }
+        else
+        {
+            controlling = platformerObj.GetComponent<Controllable>();
+
+            cameraRender.SetRenderPlatformer();
+        }
     }
 }
