@@ -60,25 +60,27 @@ public class PlayerActions : PlayerActionSet
             Jump.AddDefaultBinding(Key.Space);
             Shoot.AddDefaultBinding(Key.Shift);
         }
+        else
+        {
+            Left.AddDefaultBinding(InputControlType.DPadLeft);
+            Right.AddDefaultBinding(InputControlType.DPadRight);
+            Up.AddDefaultBinding(InputControlType.DPadUp);
+            Down.AddDefaultBinding(InputControlType.DPadDown);
 
-        Left.AddDefaultBinding(InputControlType.DPadLeft);
-        Right.AddDefaultBinding(InputControlType.DPadRight);
-        Up.AddDefaultBinding(InputControlType.DPadUp);
-        Down.AddDefaultBinding(InputControlType.DPadDown);
+            Left.AddDefaultBinding(InputControlType.LeftStickLeft);
+            Right.AddDefaultBinding(InputControlType.LeftStickRight);
+            Up.AddDefaultBinding(InputControlType.LeftStickUp);
+            Down.AddDefaultBinding(InputControlType.LeftStickDown);
 
-        Left.AddDefaultBinding(InputControlType.LeftStickLeft);
-        Right.AddDefaultBinding(InputControlType.LeftStickRight);
-        Up.AddDefaultBinding(InputControlType.LeftStickUp);
-        Down.AddDefaultBinding(InputControlType.LeftStickDown);
+            AltLeft.AddDefaultBinding(InputControlType.RightStickLeft);
+            AltRight.AddDefaultBinding(InputControlType.RightStickRight);
+            AltUp.AddDefaultBinding(InputControlType.RightStickUp);
+            AltDown.AddDefaultBinding(InputControlType.RightStickDown);
 
-        AltLeft.AddDefaultBinding(InputControlType.RightStickLeft);
-        AltRight.AddDefaultBinding(InputControlType.RightStickRight);
-        AltUp.AddDefaultBinding(InputControlType.RightStickUp);
-        AltDown.AddDefaultBinding(InputControlType.RightStickDown);
-
-        Jump.AddDefaultBinding(InputControlType.Action1);
-        Shoot.AddDefaultBinding(InputControlType.RightTrigger);
-        Shoot.AddDefaultBinding(InputControlType.RightBumper);
+            Jump.AddDefaultBinding(InputControlType.Action1);
+            Shoot.AddDefaultBinding(InputControlType.RightTrigger);
+            Shoot.AddDefaultBinding(InputControlType.RightBumper);
+        }
     }
 
     public void AssignController(InputDevice device)
