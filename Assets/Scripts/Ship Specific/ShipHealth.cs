@@ -18,8 +18,16 @@ public class ShipHealth : MonoBehaviour, IShipDamageable
         currentHealth = startingHealthValue;
     }
 
+    private void Die()
+    {
+
+    }
+
     void IShipDamageable.ApplyDamage(float damageValue)
     {
         currentHealth -= damageValue;
+
+        if (currentHealth <= 0)
+            Die();
     }
 }
