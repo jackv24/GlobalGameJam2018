@@ -144,8 +144,7 @@ public class ShipControls : Controllable
         {
             int resourcesInRange = Physics2D.OverlapCircleNonAlloc(transform.position, transmissionPingResourceRadius, pingResourceCache);
 
-            glowEffect.ResourceCount = resourcesInRange;
-            glowEffect.ResourcePositions = pingResourceCache.Select(resource => (Vector2)resource.transform.position).ToArray();
+            glowEffect.Set(resourcesInRange, pingResourceCache.Select(resource => (Vector2)resource.transform.position).ToArray());
 
 
             // Raise ping event
