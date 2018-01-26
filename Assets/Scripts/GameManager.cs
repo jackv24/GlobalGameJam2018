@@ -41,7 +41,10 @@ public class GameManager : MonoBehaviour
 
             ShipControls ship = playerObj.GetComponentInChildren<ShipControls>();
             if (ship)
+            {
                 playerShips.Add(ship);
+                ship.OnTransmissionPing += OnShipPing;
+            }
 
             cameraObj.transform.SetParent(playerObj.transform);
 
@@ -87,6 +90,18 @@ public class GameManager : MonoBehaviour
 
                     playerHUD.platformerStats = playerObj.GetComponentInChildren<PlatformerStats>();
                 }
+            }
+        }
+    }
+
+    private void OnShipPing(ShipControls sender)
+    {
+        // Alert all other ships to sender ship's location
+        foreach (var ship in playerShips)
+        {
+            if (ship != sender)
+            {
+                ship.AlertEnemyPresence(sender);
             }
         }
     }

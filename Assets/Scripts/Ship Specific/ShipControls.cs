@@ -7,6 +7,12 @@ using UnityEngine;
 public class ShipControls : Controllable
 {
 
+    #region Delegates & Events
+    public delegate void TransmissionPingDelegate(ShipControls sender);
+
+    public event TransmissionPingDelegate OnTransmissionPing;
+    #endregion
+
     #region Fields & Properties
     private new Rigidbody2D rigidbody2D;
     private ResourceBank resourceBank;
@@ -16,6 +22,7 @@ public class ShipControls : Controllable
     private ShipGun powerWeapon;
     private float lastPingTime;
     private Collider2D[] pingResourceCache = new Collider2D[64];
+    private Dictionary<ShipControls, Vector2> enemyPings;
 
     private Vector2 lookVector;
 
@@ -53,6 +60,7 @@ public class ShipControls : Controllable
             throw new System.MissingFieldException("ShipControls script requires a default weapon");
 
         this.collider = GetComponent<Collider2D>();
+        this.enemyPings = new Dictionary<ShipControls, Vector2>();
     }
 
     #region Collision Detection
@@ -136,6 +144,10 @@ public class ShipControls : Controllable
                 }
             }
 
+            // Raise ping event
+            if (OnTransmissionPing != null)
+                OnTransmissionPing(this);
+
             lastPingTime = Time.time;
         }
     }
@@ -161,6 +173,17 @@ public class ShipControls : Controllable
         }
     }
     #endregion
+
+    /// <summary>
+    /// Alerts this ship to the position of an enemy
+    /// </summary>
+    public void AlertEnemyPresence(ShipControls enemyShip)
+    {
+        if (enemyPings.ContainsKey(enemyShip))
+            enemyPings[enemyShip] = enemyShip.transform.position;
+        else
+            enemyPings.Add(enemyShip, enemyShip.transform.position);
+    }
 
     private void FixedUpdate()
     {
