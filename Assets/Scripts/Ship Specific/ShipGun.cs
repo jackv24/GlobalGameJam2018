@@ -35,7 +35,10 @@ public class ShipGun : MonoBehaviour
         shipGunData.Validate();
     }
 
-    public void Shoot(Vector2 origin, Vector2 direction)
+    /// <summary>
+    /// Shoots the gun & returns the shot instance
+    /// </summary>
+    public ShipGunShot Shoot(Vector2 origin, Vector2 direction)
     {
         GameObject shot = ObjectPooler.GetPooledObject(shipGunData.ShotPrefab);
 
@@ -43,5 +46,8 @@ public class ShipGun : MonoBehaviour
 
         shotBehaviour.Position = origin;
         shotBehaviour.Direction = direction;
+        shotBehaviour.Damage = shipGunData.Damage;
+
+        return shotBehaviour;
     }
 }

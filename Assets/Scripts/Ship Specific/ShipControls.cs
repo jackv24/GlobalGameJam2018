@@ -11,6 +11,8 @@ public class ShipControls : Controllable
     private new Rigidbody2D rigidbody2D;
     private ResourceBank resourceBank;
 
+    private new Collider2D collider;
+
     private ShipGun powerWeapon;
     private float lastPingTime;
     private Collider2D[] pingResourceCache = new Collider2D[64];
@@ -18,8 +20,11 @@ public class ShipControls : Controllable
     private Vector2 lookVector;
 
     [SerializeField]
-    [Range(0, 10)]
-    private float impulseMagnitude = 3;
+    private float maximumVelocity = 10;
+
+    [SerializeField]
+    [Range(10, 30)]
+    private float impulseMagnitude = 15;
 
     [SerializeField]
     [Range(1, 30)]
@@ -46,6 +51,8 @@ public class ShipControls : Controllable
         this.defaultWeapon = GetComponent<ShipGun>();
         if (this.defaultWeapon == null)
             throw new System.MissingFieldException("ShipControls script requires a default weapon");
+
+        this.collider = GetComponent<Collider2D>();
     }
 
     #region Collision Detection
@@ -97,9 +104,11 @@ public class ShipControls : Controllable
     #endregion
 
     #region Controllable Overrides
+    private Vector2 movementVector;
+
     public override void Move(Vector2 inputVector)
     {
-        rigidbody2D.AddForce(inputVector * impulseMagnitude * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        movementVector = inputVector;
     }
 
     public override void Look(Vector2 inputVector)
@@ -135,17 +144,31 @@ public class ShipControls : Controllable
     {
         if (lookVector.sqrMagnitude > 0 && buttonState == ButtonState.WasPressed)
         {
+            ShipGunShot shot;
+
             if (powerWeapon != null)
             {
                 // Shoot power weapon & drop it
-                powerWeapon.Shoot(transform.position, lookVector);
+                shot = powerWeapon.Shoot(transform.position, lookVector);
                 powerWeapon = null;
             }
             else
             {
-                defaultWeapon.Shoot(transform.position, lookVector);
+                shot = defaultWeapon.Shoot(transform.position, lookVector);
             }
+            
+            Physics2D.IgnoreCollision(shot.Collider, collider);
         }
     }
     #endregion
+
+    private void FixedUpdate()
+    {
+        Vector2 desiredVelocity = rigidbody2D.velocity + movementVector * impulseMagnitude * Time.fixedDeltaTime;
+
+        if (desiredVelocity.sqrMagnitude > maximumVelocity * maximumVelocity)
+            desiredVelocity = desiredVelocity.normalized * maximumVelocity;
+
+        rigidbody2D.velocity = desiredVelocity;
+    }
 }

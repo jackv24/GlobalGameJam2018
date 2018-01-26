@@ -7,6 +7,9 @@ public class ShipGunShot : MonoBehaviour
 {
     private new Rigidbody2D rigidbody2D;
 
+    private new Collider2D collider;
+    public Collider2D Collider { get { return collider; } }
+
     [SerializeField]
     [Range(1, 5)]
     [Tooltip("Time in seconds the shot will stay live")]
@@ -17,11 +20,14 @@ public class ShipGunShot : MonoBehaviour
     
     public Vector2 Position { set { transform.position = value; } }
     public Vector2 Direction { get; set; }
+    public float Damage { get; set; }
 
     private void Awake()
     {
         this.rigidbody2D = GetComponent<Rigidbody2D>();
         this.rigidbody2D.gravityScale = 0;
+
+        this.collider = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -36,7 +42,13 @@ public class ShipGunShot : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // TODO: Apply damage to hit targets that implement IShipDamageable
+        IShipDamageable damageable = collision.gameObject.GetComponent<IShipDamageable>();
+
+        if (damageable != null)
+        {
+            damageable.ApplyDamage(Damage);
+            this.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator Lifetime()
