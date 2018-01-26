@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 223281688731855888}
   - component: {fileID: 114937591599401836}
   - component: {fileID: 114084439474517978}
+  - component: {fileID: 114103004363828346}
   - component: {fileID: 114530984238923858}
   - component: {fileID: 114621482330498916}
   m_Layer: 5
@@ -248,6 +249,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114103004363828346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397417454575760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af50c3eeb5523a4d8170fac0c060a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformerStats: {fileID: 0}
+  shipHealth: {fileID: 0}
+  shipHealthSlider: {fileID: 114347949166114698}
+  playerHealthSlider: {fileID: 114938065214370104}
 --- !u!114 &114124942298361336
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -377,7 +393,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.519
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -653,7 +669,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.519
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

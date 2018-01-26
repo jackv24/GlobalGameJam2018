@@ -14,9 +14,11 @@ public class PlatformerController : Controllable
     public float jumpForce = 5.0f;
     private bool shouldJump = false;
 
+    [Space()]
     public float groundedDistance = 0.1f;
     public LayerMask groundLayer;
     public int groundDetectRays = 3;
+    public float widthSkin = 0.1f;
 
     private float inputDirection;
     private float oldInputDirection = 1;
@@ -95,7 +97,7 @@ public class PlatformerController : Controllable
 
         for (int i = 0; i < groundDetectRays; i++)
         {
-            Vector2 origin = new Vector2(Mathf.Lerp(col.bounds.min.x, col.bounds.max.x, (float)i / (groundDetectRays - 1)), col.bounds.center.y);
+            Vector2 origin = new Vector2(Mathf.Lerp(col.bounds.min.x + widthSkin, col.bounds.max.x - widthSkin, (float)i / (groundDetectRays - 1)), col.bounds.center.y);
             float length = ((col.size.y * transform.localScale.y) / 2) + groundedDistance;
 
             RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, length, groundLayer);
@@ -103,7 +105,9 @@ public class PlatformerController : Controllable
             Debug.DrawLine(origin, origin + Vector2.down * length);
 
             if (hit.collider != null)
+            {
                 grounded = true;
+            }
         }
 
         return grounded;

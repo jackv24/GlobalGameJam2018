@@ -79,6 +79,14 @@ public class GameManager : MonoBehaviour
                 {
                     hud.worldCamera = cam;
                 }
+
+                PlayerHUD playerHUD = hudObj.GetComponent<PlayerHUD>();
+                if(playerHUD)
+                {
+                    playerHUD.shipHealth = playerObj.GetComponentInChildren<ShipHealth>();
+
+                    playerHUD.platformerStats = playerObj.GetComponentInChildren<PlatformerStats>();
+                }
             }
         }
     }

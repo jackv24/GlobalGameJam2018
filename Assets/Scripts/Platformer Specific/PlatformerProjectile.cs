@@ -38,11 +38,11 @@ public class PlatformerProjectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.tag == "Player")
         {
-            PlatformerStats stats = collision.gameObject.GetComponent<PlatformerStats>();
+            PlatformerStats stats = collision.GetComponent<PlatformerStats>();
 
             if(stats)
             {
