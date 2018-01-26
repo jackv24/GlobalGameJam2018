@@ -40,15 +40,14 @@ public class ShipGunShot : MonoBehaviour
         rigidbody2D.velocity = Direction.normalized * velocity;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        IShipDamageable damageable = collision.gameObject.GetComponent<IShipDamageable>();
+        IShipDamageable damageable = collider.gameObject.GetComponent<IShipDamageable>();
 
         if (damageable != null)
-        {
             damageable.ApplyDamage(Damage);
-            this.gameObject.SetActive(false);
-        }
+
+        this.gameObject.SetActive(false);
     }
 
     private IEnumerator Lifetime()
