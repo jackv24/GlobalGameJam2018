@@ -8,12 +8,40 @@ public class ShipGun : MonoBehaviour
     [SerializeField]
     private ShipGunData shipGunData;
 
-    public ShipGunData ShipGunData { get { return shipGunData; } }
+    public ShipGunData ShipGunData
+    {
+        get
+        {
+            return shipGunData;
+        }
+        set
+        {
+            if (value != null)
+            {
+                shipGunData = value;
+                shipGunData.Validate();
+            }
+            else
+                throw new System.ArgumentNullException();
+        }
+    }
     #endregion
+
+    private void Start()
+    {
+        if (shipGunData == null)
+            throw new System.MissingFieldException("ShipGun requires shipGunData");
+
+        shipGunData.Validate();
+    }
 
     public void Shoot(Vector2 origin, Vector2 direction)
     {
-        Debug.DrawRay(origin, direction * 10);
-        Debug.Log(string.Format("Firing from {0} in direction {1}", origin.ToString(), direction.ToString()));
+        GameObject shot = ObjectPooler.GetPooledObject(shipGunData.ShotPrefab);
+
+        var shotBehaviour = shot.GetComponent<ShipGunShot>();
+
+        shotBehaviour.Position = origin;
+        shotBehaviour.Direction = direction;
     }
 }

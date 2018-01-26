@@ -13,6 +13,7 @@ public class ShipControls : Controllable
 
     private ShipGun powerWeapon;
     private float lastPingTime;
+    private Collider2D[] pingResourceCache = new Collider2D[64];
 
     private Vector2 lookVector;
 
@@ -24,6 +25,10 @@ public class ShipControls : Controllable
     [Range(1, 30)]
     [Tooltip("Time in seconds between Transmission Pings")]
     private float transmissionPingCooldown = 5;
+
+    [SerializeField]
+    [Range(10, 100)]
+    private float transmissionPingResourceRadius = 30;
 
     [SerializeField]
     private ShipGun defaultWeapon;
@@ -62,12 +67,14 @@ public class ShipControls : Controllable
     /// </summary>
     private void CollectWeapon(Transform worldObject)
     {
-        ShipGun gun = worldObject.GetComponent<ShipGun>();
+        ShipGunPickup gunPickup = worldObject.GetComponent<ShipGunPickup>();
 
-        if (gun == null)
-            throw new System.Exception(string.Format("No Gun script found on weapon-tagged object with name {0}", worldObject.name));
+        if (gunPickup == null)
+            throw new System.Exception(string.Format("No ShipGunPickup script found on weapon-tagged object with name {0}", worldObject.name));
 
-        powerWeapon = gun;
+        ShipGunData gunData = gunPickup.Consume();
+        powerWeapon = this.gameObject.AddComponent<ShipGun>();
+        powerWeapon.ShipGunData = gunData;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -109,7 +116,17 @@ public class ShipControls : Controllable
         if (buttonState == ButtonState.WasPressed
             && Time.time - lastPingTime >= transmissionPingCooldown)
         {
-            // TODO: Ping
+            int resourcesInRange = Physics2D.OverlapCircleNonAlloc(transform.position, transmissionPingResourceRadius, pingResourceCache);
+
+            if (resourcesInRange > 0)
+            {
+                for (int i = 0; i < resourcesInRange; i++)
+                {
+                    // TODO: Do something with 
+                    // pingResourceCache[i]
+                }
+            }
+
             lastPingTime = Time.time;
         }
     }
