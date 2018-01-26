@@ -1132,6 +1132,7 @@ MonoBehaviour:
   - {fileID: 114818762231343062}
   - {fileID: 114730433263861248}
   - {fileID: 114367752145361312}
+  startPrompt: {fileID: 1264211893766048}
 --- !u!114 &114551733670728150
 MonoBehaviour:
   m_ObjectHideFlags: 1

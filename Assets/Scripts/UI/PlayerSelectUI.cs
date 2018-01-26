@@ -17,9 +17,13 @@ public class PlayerSelectUI : MonoBehaviour
     private List<InputDevice> boundDevices = new List<InputDevice>();
     private bool addedKeyboard = false;
 
+    [Space()]
+    public GameObject startPrompt;
+
     private void Start()
     {
         startPanels[0].ShowPrompt(true);
+        startPrompt.SetActive(false);
     }
 
     private void Update()
@@ -71,6 +75,9 @@ public class PlayerSelectUI : MonoBehaviour
 
             if(bound)
             {
+                if (currentStartPanel == 1)
+                    startPrompt.SetActive(true);
+
                 startPanels[currentStartPanel].SetSelected(true);
 
                 if (currentStartPanel < startPanels.Length - 1)
