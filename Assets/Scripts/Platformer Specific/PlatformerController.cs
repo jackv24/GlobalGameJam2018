@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(PlatformerAttack))]
 public class PlatformerController : Controllable
 {
     public float inputDeadZone = 0.2f;
@@ -15,17 +16,20 @@ public class PlatformerController : Controllable
 
     public float groundedDistance = 0.1f;
     public LayerMask groundLayer;
+    public int groundDetectRays = 3;
 
     private float inputDirection;
     private float oldInputDirection = 1;
 
     private Rigidbody2D body;
     private BoxCollider2D col;
+    private PlatformerAttack attack;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
+        attack = GetComponent<PlatformerAttack>();
     }
 
     private void FixedUpdate()
@@ -77,22 +81,30 @@ public class PlatformerController : Controllable
 
     public override void Shoot(ButtonState buttonState)
     {
-        
+        switch (buttonState)
+        {
+            case ButtonState.IsPressed:
+                attack.Shoot(Mathf.Sign(transform.localScale.x));
+                break;
+        }
     }
 
     bool CheckGrounded()
     {
         bool grounded = false;
 
-        Vector2 origin = (Vector2)transform.position + col.offset;
-        float length = ((col.size.y * transform.localScale.y) / 2) + groundedDistance;
+        for (int i = 0; i < groundDetectRays; i++)
+        {
+            Vector2 origin = new Vector2(Mathf.Lerp(col.bounds.min.x, col.bounds.max.x, (float)i / (groundDetectRays - 1)), col.bounds.center.y);
+            float length = ((col.size.y * transform.localScale.y) / 2) + groundedDistance;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, length, groundLayer);
+            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, length, groundLayer);
 
-        Debug.DrawLine(origin, origin + Vector2.down * length);
+            Debug.DrawLine(origin, origin + Vector2.down * length);
 
-        if (hit.collider != null)
-            grounded = true;
+            if (hit.collider != null)
+                grounded = true;
+        }
 
         return grounded;
     }
