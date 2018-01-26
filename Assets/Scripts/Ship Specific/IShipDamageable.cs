@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IShipDamageable
 {
-    void ApplyDamage(float damageValue);
+    void ApplyDamage(int damageValue);
+
+    int CurrentHealth { get; }
 }
