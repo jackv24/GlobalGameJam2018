@@ -286,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputDeadZone: 0.2
   moveSpeed: 8
-  jumpForce: 10
+  jumpForce: 15
   groundedDistance: 0.1
   groundLayer:
     serializedVersion: 2

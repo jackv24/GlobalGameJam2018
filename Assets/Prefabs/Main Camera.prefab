@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenPos: 1
   maxScreens: 4
-  edgePadding: 0.01
+  edgePadding: 0
 --- !u!114 &114673330503024680
 MonoBehaviour:
   m_ObjectHideFlags: 1

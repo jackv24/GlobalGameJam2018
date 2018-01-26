@@ -104,7 +104,10 @@ public class PlayerInput : MonoBehaviour
         inShip = !inShip;
 
         if (controlling)
+        {
             controlling.Move(Vector2.zero);
+            controlling.gameObject.SetActive(false);
+        }
 
         if(inShip)
         {
@@ -117,6 +120,14 @@ public class PlayerInput : MonoBehaviour
             controlling = platformerObj.GetComponent<Controllable>();
 
             cameraRender.SetRenderPlatformer();
+
+            ShipInterior shipInterior = GetComponentInChildren<ShipInterior>();
+            if(shipInterior)
+            {
+                platformerObj.transform.position = shipInterior.spawnPoint.position;
+            }
         }
+
+        controlling.gameObject.SetActive(true);
     }
 }

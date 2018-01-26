@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         {
             int num = i + 1;
 
-            GameObject playerObj = Instantiate(playerPrefab);
+            GameObject playerObj = Instantiate(playerPrefab, new Vector3(0, 2 * i, 0), Quaternion.identity);
             GameObject cameraObj = Instantiate(cameraPrefab, playerObj.transform);
 
             ShipControls ship = playerObj.GetComponentInChildren<ShipControls>();
