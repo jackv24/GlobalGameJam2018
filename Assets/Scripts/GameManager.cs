@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject cameraPrefab;
     public GameObject playerPrefab;
+    public GameObject hudPrefab;
 
     private List<PlayerActions> playerControls = new List<PlayerActions>();
+
+    private List<ShipControls> playerShips = new List<ShipControls>();
 
     private void Awake()
     {
@@ -36,6 +39,10 @@ public class GameManager : MonoBehaviour
             GameObject cameraObj = Instantiate(cameraPrefab);
             GameObject playerObj = Instantiate(playerPrefab);
 
+            ShipControls ship = playerObj.GetComponentInChildren<ShipControls>();
+            if (ship)
+                playerShips.Add(ship);
+
             cameraObj.transform.SetParent(playerObj.transform);
 
             cameraObj.name = "Camera " + num;
@@ -59,6 +66,19 @@ public class GameManager : MonoBehaviour
                 splitScreen.maxScreens = playerControls.Count;
 
                 splitScreen.Setup();
+            }
+
+            Camera cam = cameraObj.GetComponent<Camera>();
+            if (cam)
+            {
+                GameObject hudObj = Instantiate(hudPrefab);
+                hudObj.transform.SetParent(playerObj.transform);
+
+                Canvas hud = hudObj.GetComponent<Canvas>();
+                if (hud)
+                {
+                    hud.worldCamera = cam;
+                }
             }
         }
     }

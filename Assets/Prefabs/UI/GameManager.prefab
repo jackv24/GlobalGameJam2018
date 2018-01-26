@@ -94,3 +94,4 @@ MonoBehaviour:
     type: 2}
   playerPrefab: {fileID: 1660428867551702, guid: 76be408c1c8890c499a8f3888b9ba3d1,
     type: 2}
+  hudPrefab: {fileID: 1397417454575760, guid: d7958f6ca916f8d4f97e4d5bd8a43954, type: 2}

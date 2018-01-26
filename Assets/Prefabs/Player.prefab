@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlling: {fileID: 114523297361750412}
+  followTarget: {fileID: 0}
 --- !u!114 &114458548805471220
 MonoBehaviour:
   m_ObjectHideFlags: 1
