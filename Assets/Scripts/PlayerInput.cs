@@ -104,18 +104,19 @@ public class PlayerInput : MonoBehaviour
         inShip = !inShip;
 
         if (controlling)
-        {
             controlling.Move(Vector2.zero);
-            controlling.gameObject.SetActive(false);
-        }
 
         if(inShip)
         {
+            //Disable platformer while controlling ship
+            if(controlling)
+                controlling.gameObject.SetActive(false);
+
             controlling = shipObj.GetComponent<Controllable>();
 
             cameraRender.SetRenderShip();
         }
-        else
+        else // Do not idsable ships while in platformer
         {
             controlling = platformerObj.GetComponent<Controllable>();
 

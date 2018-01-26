@@ -87,8 +87,8 @@ public class GameManager : MonoBehaviour
                 if(playerHUD)
                 {
                     playerHUD.shipHealth = playerObj.GetComponentInChildren<ShipHealth>();
-
                     playerHUD.platformerStats = playerObj.GetComponentInChildren<PlatformerStats>();
+                    playerHUD.resourceBank = playerObj.GetComponent<ResourceBank>();
                 }
             }
         }

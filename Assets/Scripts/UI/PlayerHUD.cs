@@ -7,9 +7,12 @@ public class PlayerHUD : MonoBehaviour
 {
     public PlatformerStats platformerStats;
     public ShipHealth shipHealth;
+    public ResourceBank resourceBank;
 
     public Slider shipHealthSlider;
     public Slider playerHealthSlider;
+    public Text resourceText;
+    public string resourceFormatString = "000000";
 
     private void Start()
     {
@@ -26,6 +29,14 @@ public class PlayerHUD : MonoBehaviour
             shipHealth.OnDamage += (ShipHealth owner, int damage, int newHealthValue) =>
             {
                 shipHealthSlider.value = (float)newHealthValue / owner.MaxHealth;
+            };
+        }
+
+        if(resourceBank && resourceText)
+        {
+            resourceBank.OnResourcesChanged += (int value) => 
+            {
+                resourceText.text = value.ToString(resourceFormatString);
             };
         }
     }

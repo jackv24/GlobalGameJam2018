@@ -41,14 +41,17 @@ public class ShipResourceGlowEffect : MonoBehaviour
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        postProcessor.SetFloat("_EffectAlpha", effectAlpha);
-        postProcessor.SetInt("_PositionCount", resourceCount);
-        postProcessor.SetInt("_TexWidth", source.width);
-        postProcessor.SetInt("_TexHeight", source.height);
+        if (postProcessor)
+        {
+            postProcessor.SetFloat("_EffectAlpha", effectAlpha);
+            postProcessor.SetInt("_PositionCount", resourceCount);
+            postProcessor.SetInt("_TexWidth", source.width);
+            postProcessor.SetInt("_TexHeight", source.height);
 
-        if (resourceCount > 0)
-            postProcessor.SetVectorArray("_Positions", resourcePositions.Select(pos => (Vector4)pos).ToArray());
+            if (resourceCount > 0)
+                postProcessor.SetVectorArray("_Positions", resourcePositions.Select(pos => (Vector4)pos).ToArray());
 
-        Graphics.Blit(source, destination, postProcessor);
+            Graphics.Blit(source, destination, postProcessor);
+        }
     }
 }
