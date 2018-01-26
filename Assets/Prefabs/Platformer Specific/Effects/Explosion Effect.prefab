@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 198043923122701498}
   - component: {fileID: 199037090410190282}
   - component: {fileID: 114009530069509716}
+  - component: {fileID: 114502584517809174}
+  - component: {fileID: 114478956928381590}
   m_Layer: 0
   m_Name: Explosion Effect
   m_TagString: Untagged
@@ -53,6 +55,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680b7b1d1839f1d4ca48f51018030033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114478956928381590
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507365487598214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: fcc2a773-26e1-42ec-91a4-e1899efe182b
+--- !u!114 &114502584517809174
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1507365487598214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1507365487598214}
+  _assetGuid: ec9dc770dc66cfc4c9449aefc0fc343e
 --- !u!198 &198043923122701498
 ParticleSystem:
   m_ObjectHideFlags: 1

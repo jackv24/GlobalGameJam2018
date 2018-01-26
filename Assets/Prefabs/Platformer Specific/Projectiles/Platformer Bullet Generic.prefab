@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 58012783920054238}
   - component: {fileID: 50708404381082322}
   - component: {fileID: 114136505364611680}
+  - component: {fileID: 114141422383058138}
+  - component: {fileID: 114352496849851170}
   m_Layer: 11
   m_Name: Platformer Bullet Generic
   m_TagString: Untagged
@@ -134,3 +136,32 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1507365487598214, guid: ec9dc770dc66cfc4c9449aefc0fc343e,
     type: 2}
   damageValue: 1
+--- !u!114 &114141422383058138
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198570174557056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -605777808, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isConnected: 1
+  _guid: 
+  _referenceCollection:
+    _collection:
+    - {fileID: 1198570174557056}
+  _assetGuid: 5b7e92fbef4c5b84a98f23ece38bc7ce
+--- !u!114 &114352496849851170
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198570174557056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: ab931fe2-7e5a-4cbd-8995-405fb9afa62e
