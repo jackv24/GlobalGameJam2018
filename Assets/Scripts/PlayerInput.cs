@@ -6,13 +6,26 @@ public class PlayerInput : MonoBehaviour
 {
     public Controllable controlling;
 
+    [HideInInspector]
+    public Transform followTarget;
+
     private PlayerActions playerActions;
+
+    private void Awake()
+    {
+        GameObject obj = new GameObject("Follow Target");
+        followTarget = obj.transform;
+        followTarget.transform.SetParent(transform);
+    }
 
     private void Start()
     {
-        //TODO: Replace with not shit code
-        playerActions = new PlayerActions();
-        playerActions.SetupBindings(true);
+        //Allows playing from scene without game setup
+        if (Time.time < 0.1f)
+        {
+            playerActions = new PlayerActions();
+            playerActions.SetupBindings(true);
+        }
     }
 
     private void Update()
@@ -29,6 +42,8 @@ public class PlayerInput : MonoBehaviour
             controlling.Look(lookInput);
             controlling.Jump(jumpButtonState);
             controlling.Shoot(shootButtonState);
+
+            followTarget.transform.position = controlling.transform.position;
         }
     }
 
@@ -44,5 +59,10 @@ public class PlayerInput : MonoBehaviour
             state = ButtonState.WasReleased;
 
         return state;
+    }
+
+    public void SetPlayerActions(PlayerActions actions)
+    {
+        playerActions = actions;
     }
 }

@@ -8,6 +8,8 @@ public class SplitScreenSetup : MonoBehaviour
     public int screenPos = 1;
     public int maxScreens = 4;
 
+    public float edgePadding = 0.05f;
+
     private Camera cam;
 
     private void Awake()
@@ -63,6 +65,22 @@ public class SplitScreenSetup : MonoBehaviour
                     rect = new Rect(0.5f, 0, 0.5f, 1.0f);
                     break;
             }
+        }
+
+        if(rect != cam.rect)
+        {
+            float padding = edgePadding / 2;
+            float ratio = (float)Screen.height / Screen.width;
+
+            Vector2 size = rect.size;
+            size.x -= edgePadding * ratio;
+            size.y -= edgePadding;
+            rect.size = size;
+
+            Vector2 pos = rect.position;
+            pos.x += padding * ratio;
+            pos.y += padding;
+            rect.position = pos;
         }
 
         cam.rect = rect;
