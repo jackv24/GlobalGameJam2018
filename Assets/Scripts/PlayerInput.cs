@@ -127,4 +127,21 @@ public class PlayerInput : MonoBehaviour
 
         controlling.gameObject.SetActive(true);
     }
+
+    public void DieReset(bool killShip = true)
+    {
+        if (killShip)
+        {
+            ShipHealth shipHealth = shipObj.GetComponent<ShipHealth>();
+            shipHealth.Die(false);
+        }
+
+        //RESET GAME
+        shipObj.transform.position = Vector2.zero;
+
+        shipObj.SetActive(false);
+        shipObj.SetActive(true);
+
+        platformerObj.SetActive(false);
+    }
 }

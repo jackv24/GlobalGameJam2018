@@ -27,7 +27,17 @@ public class PlatformerStats : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log(gameObject + " is dead!");
+        ShipInterior ship = transform.parent.GetComponentInChildren<ShipInterior>();
+        if (ship)
+            Destroy(ship.gameObject);
+
+        PlayerInput player = GetComponentInParent<PlayerInput>();
+        if(player)
+        {
+            player.DieReset();
+        }
+
+        currentHealth = maxHealth;
     }
 
     public void SendHealthEvent()

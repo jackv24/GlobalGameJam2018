@@ -31,9 +31,19 @@ public class ShipHealth : MonoBehaviour, IShipDamageable
             OnDamage(this, 0, currentHealth);
     }
 
-    private void Die()
+    public void Die(bool dieReset = true)
     {
+        if (dieReset)
+        {
+            PlayerInput player = GetComponentInParent<PlayerInput>();
+            if (player)
+            {
+                player.DieReset(false);
+            }
+        }
 
+        //TODO: Explosions and shit
+        currentHealth = maxHealth;
     }
 
     int IShipDamageable.CurrentHealth { get { return currentHealth; } }

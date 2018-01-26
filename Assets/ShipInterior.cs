@@ -9,8 +9,18 @@ public class ShipInterior : MonoBehaviour
 
     public Transform spawnPoint;
 
+    public PlayerInput owner;
+
+    public ShipInterior otherShipInterior;
+
     void OnDestroy()
     {
+        if(otherShipInterior)
+            Destroy(otherShipInterior.gameObject);
+
+        if (owner)
+            owner.SwitchMode();
+
         if (OnDestroyed != null)
             OnDestroyed(this);
     }
