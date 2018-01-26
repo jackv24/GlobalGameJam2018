@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public Controllable shipControl;
-    public Controllable platformerControl;
-
-    private Controllable controlling;
+    public Controllable controlling;
 
     private PlayerActions playerActions;
 
@@ -16,9 +13,6 @@ public class PlayerInput : MonoBehaviour
         //TODO: Replace with not shit code
         playerActions = new PlayerActions();
         playerActions.SetupBindings(true);
-
-        //TODO: Replace this with non-test code
-        SetControlling(platformerControl);
     }
 
     private void Update()
@@ -36,11 +30,6 @@ public class PlayerInput : MonoBehaviour
             controlling.Jump(jumpButtonState);
             controlling.Shoot(shootButtonState);
         }
-    }
-
-    public void SetControlling(Controllable control)
-    {
-        controlling = control;
     }
 
     private ButtonState GetButtonState(InControl.PlayerAction action)
