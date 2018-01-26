@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
         {
             int num = i + 1;
 
-            GameObject cameraObj = Instantiate(cameraPrefab);
             GameObject playerObj = Instantiate(playerPrefab);
+            GameObject cameraObj = Instantiate(cameraPrefab, playerObj.transform);
 
             ShipControls ship = playerObj.GetComponentInChildren<ShipControls>();
             if (ship)
@@ -45,8 +45,6 @@ public class GameManager : MonoBehaviour
                 playerShips.Add(ship);
                 ship.OnTransmissionPing += OnShipPing;
             }
-
-            cameraObj.transform.SetParent(playerObj.transform);
 
             cameraObj.name = "Camera " + num;
             playerObj.name = "Player " + num;
@@ -74,8 +72,7 @@ public class GameManager : MonoBehaviour
             Camera cam = cameraObj.GetComponent<Camera>();
             if (cam)
             {
-                GameObject hudObj = Instantiate(hudPrefab);
-                hudObj.transform.SetParent(playerObj.transform);
+                GameObject hudObj = Instantiate(hudPrefab, playerObj.transform);
 
                 Canvas hud = hudObj.GetComponent<Canvas>();
                 if (hud)

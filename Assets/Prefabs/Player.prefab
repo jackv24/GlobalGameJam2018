@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114308287119528470}
   - component: {fileID: 114667604705849112}
   - component: {fileID: 114298138909969562}
+  - component: {fileID: 114044143819817132}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -42,9 +43,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114298138909969562
+--- !u!114 &114044143819817132
 MonoBehaviour:
   m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660428867551702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5effb88d1ab0654cb342c5b0e808023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114298138909969562
+MonoBehaviour:
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660428867551702}
@@ -67,11 +79,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformerPrefab: {fileID: 1998820672914462, guid: 89a33eb927a9ae847ab338fdeb73cb76,
     type: 2}
-  shipPrefab: {fileID: 0}
+  shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39, type: 2}
   followTarget: {fileID: 0}
 --- !u!114 &114667604705849112
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660428867551702}

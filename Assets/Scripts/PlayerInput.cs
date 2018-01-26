@@ -24,8 +24,7 @@ public class PlayerInput : MonoBehaviour
 
         if(platformerPrefab)
         {
-            GameObject obj = Instantiate(platformerPrefab);
-            obj.transform.SetParent(transform);
+            GameObject obj = Instantiate(platformerPrefab, transform);
             obj.name = platformerPrefab.name;
 
             controlling = obj.GetComponent<Controllable>();
@@ -33,8 +32,7 @@ public class PlayerInput : MonoBehaviour
 
         if(shipPrefab)
         {
-            GameObject obj = Instantiate(shipPrefab);
-            obj.transform.SetParent(transform);
+            GameObject obj = Instantiate(shipPrefab, transform);
             obj.name = shipPrefab.name;
 
             controlling = obj.GetComponent<Controllable>();

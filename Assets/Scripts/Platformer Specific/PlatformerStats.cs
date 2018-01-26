@@ -12,7 +12,7 @@ public class PlatformerStats : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DelayedInitialHealthEvent());
+        SendHealthEvent();
     }
 
     public void RemoveHealth(int amount)
@@ -34,12 +34,5 @@ public class PlatformerStats : MonoBehaviour
     {
         if (OnUpdateHealth != null)
             OnUpdateHealth(currentHealth, maxHealth);
-    }
-
-    IEnumerator DelayedInitialHealthEvent()
-    {
-        yield return null;
-
-        SendHealthEvent();
     }
 }

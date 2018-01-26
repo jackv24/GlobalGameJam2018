@@ -25,6 +25,12 @@ public class ShipHealth : MonoBehaviour, IShipDamageable
         currentHealth = maxHealth;
     }
 
+    void Start()
+    {
+        if (OnDamage != null)
+            OnDamage(this, 0, currentHealth);
+    }
+
     private void Die()
     {
 
