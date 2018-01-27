@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 212701872734945324}
   - component: {fileID: 95187776793676192}
   - component: {fileID: 114894806209726822}
+  - component: {fileID: 114455450058380120}
   m_Layer: 9
   m_Name: Game_Jam_space_dude_animations_run_030000
   m_TagString: Untagged
@@ -266,6 +267,22 @@ MonoBehaviour:
     - {fileID: 1220452413515850}
     - {fileID: 1157100195896034}
   _assetGuid: 241f5407f936d6a4683c3c5ad30fdf5d
+--- !u!114 &114455450058380120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617652640601874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa66b7bd59e3494599c6defd0722b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepSound:
+    clip: {fileID: 8300000, guid: 71843e83f12894045aabc6694235981a, type: 3}
+    pitchMin: 0.75
+    pitchMax: 1.25
+    volume: 1
 --- !u!114 &114529301372115084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -498,7 +515,7 @@ MonoBehaviour:
           height: 0
         _stringValue: 
         _vector2Value: {x: 0, y: 0}
-        _vector3Value: {x: 0.6527, y: 0.6527208, z: 0.6527208}
+        _vector3Value: {x: 0.6527, y: 0.6527, z: 0.6527}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
       - _path: m_LocalScale.y
         _animationCurveValue:

@@ -445,7 +445,7 @@ MonoBehaviour:
   _guid: 9a17dd9d-a544-4e15-ae2a-ca32377f9ee8
 --- !u!114 &114330077825621058
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1239285048339320}
@@ -567,7 +567,7 @@ MonoBehaviour:
   _assetGuid: e3ee45d0c6dff0a4d98039db5dc09d23
 --- !u!114 &114566031739460930
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1239285048339320}
@@ -936,7 +936,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224008850801074600
 RectTransform:
