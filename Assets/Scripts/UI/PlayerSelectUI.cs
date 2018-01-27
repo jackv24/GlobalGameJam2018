@@ -52,7 +52,10 @@ public class PlayerSelectUI : MonoBehaviour
         {
             bool bound = false;
 
-            if (InputManager.ActiveDevice.AnyButtonWasPressed)
+            if (InputManager.ActiveDevice.Action1.WasPressed ||
+                InputManager.ActiveDevice.Action2.WasPressed ||
+                InputManager.ActiveDevice.Action3.WasPressed ||
+                InputManager.ActiveDevice.Action4.WasPressed)
             {
                 InputDevice device = InputManager.ActiveDevice;
 
@@ -65,7 +68,7 @@ public class PlayerSelectUI : MonoBehaviour
                     bound = true;
                 }
             }
-            else if(!addedKeyboard && Input.anyKeyDown)
+            else if(!addedKeyboard && Input.GetKeyDown(KeyCode.Return))
             {
                 GameManager.Instance.AddPlayerControl(null);
 

@@ -8,7 +8,7 @@ public class PlayerStartPanel : MonoBehaviour
     public Text pressText;
     public GameObject selectedObject;
 
-    private void Start()
+    private void Awake()
     {
         SetSelected(false);
         ShowPrompt(false);
