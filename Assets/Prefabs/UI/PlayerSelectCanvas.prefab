@@ -439,6 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressText: {fileID: 114627160514349106}
   selectedObject: {fileID: 1575805078455142}
+  selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
 --- !u!114 &114029915578235060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -818,6 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressText: {fileID: 114563301078223438}
   selectedObject: {fileID: 1848934994434424}
+  selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
 --- !u!114 &114383184975063958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1396,6 +1398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressText: {fileID: 114973834332291568}
   selectedObject: {fileID: 1010113307464242}
+  selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
 --- !u!114 &114800317376710476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1503,6 +1506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressText: {fileID: 114809393716886924}
   selectedObject: {fileID: 1380485681839090}
+  selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
 --- !u!114 &114827223123687886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2030,17 +2034,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1264211893766048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224585765451841760}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 200}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 960, y: -545}
+  m_SizeDelta: {x: 500, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224252030431908700
 RectTransform:

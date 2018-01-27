@@ -8,6 +8,8 @@ public class PlayerStartPanel : MonoBehaviour
     public Text pressText;
     public GameObject selectedObject;
 
+    public AudioClip selectSound;
+
     private void Awake()
     {
         SetSelected(false);
@@ -18,8 +20,13 @@ public class PlayerStartPanel : MonoBehaviour
     {
         selectedObject.SetActive(value);
 
-        if(value)
+        if (value)
+        {
             pressText.text = "Player Ready";
+
+            if (selectSound)
+                SoundManager.PlaySound(selectSound, transform.position);
+        }
 
         ShowPrompt(!value);
     }

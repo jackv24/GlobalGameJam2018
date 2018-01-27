@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressText: {fileID: 114774090002311732}
   selectedObject: {fileID: 1189745475026634}
+  selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
 --- !u!114 &114330631580475720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!114 &114365896951490558
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024441350806676}
@@ -322,7 +323,7 @@ MonoBehaviour:
   _guid: 399a915a-0bee-42a6-8d09-365b8d81c6e6
 --- !u!114 &114960878061440662
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024441350806676}

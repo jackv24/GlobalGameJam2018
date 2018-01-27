@@ -136,7 +136,7 @@ public class PlayerInput : MonoBehaviour
             shipHealth.Die(false);
         }
 
-        //RESET GAME
+        //TODO: REPLACE WITH ACTUAL GOOD PLACEMENT CODE
         shipObj.transform.position = Vector2.zero;
 
         shipObj.SetActive(false);

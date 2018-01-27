@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114049074372900020}
   - component: {fileID: 114575670069796192}
   - component: {fileID: 95093947568896920}
+  - component: {fileID: 114589173803123750}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -69,7 +70,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114049074372900020
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076218919630048}
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_Text: Play Game
 --- !u!114 &114575670069796192
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076218919630048}
@@ -182,6 +183,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: 9a17dd9d-a544-4e15-ae2a-ca32377f9ee8
+--- !u!114 &114589173803123750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076218919630048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e018d01121c54b4397e610585017b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectSound: {fileID: 8300000, guid: ec773cf5f57101e4b8378265340d86ee, type: 3}
+  clickSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
 --- !u!114 &114802836759367120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,7 +225,7 @@ MonoBehaviour:
   m_FillOrigin: 0
 --- !u!114 &114935270983353486
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192210967094606}
