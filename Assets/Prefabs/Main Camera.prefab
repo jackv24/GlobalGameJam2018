@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114088187320772650}
   - component: {fileID: 114646928043528124}
   - component: {fileID: 114893815458537706}
+  - component: {fileID: 114283940686252586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -94,6 +95,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guid: b5b732f8-17ea-4c8f-a042-3a7bd3b65559
+--- !u!114 &114283940686252586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849089121664510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9a6d7a811e26744bf019b686a4710c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114443842632501432
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -124,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipLayers:
     serializedVersion: 2
-    m_Bits: 94241
+    m_Bits: 225313
   platformerLayers:
     serializedVersion: 2
     m_Bits: 36640
