@@ -26,7 +26,7 @@ public class ShipControls : Controllable
     private Collider2D[] pingResourceCache = new Collider2D[64];
     private Dictionary<ShipControls, Vector2> enemyPings;
 
-    private Vector2 lookVector;
+    private float lookAngle;
 
     [SerializeField]
     private float maximumVelocity = 10;
@@ -128,10 +128,16 @@ public class ShipControls : Controllable
         movementVector = inputVector;
     }
 
+    private Vector2 GetLookVector()
+    {
+        return new Vector2(Mathf.Sin(Mathf.Deg2Rad * lookAngle), Mathf.Cos(Mathf.Deg2Rad * lookAngle));
+    }
+
     public override void Look(Vector2 inputVector)
     {
-        // TODO: Slerp values?
-        lookVector = inputVector;
+        lookAngle = Mathf.LerpAngle(lookAngle, Vector2.SignedAngle(Vector2.up, inputVector), inputVector.sqrMagnitude * 0.1f);
+        
+        rigidbody2D.MoveRotation(lookAngle);
     }
 
     /// <summary>
@@ -157,19 +163,19 @@ public class ShipControls : Controllable
 
     public override void Shoot(ButtonState buttonState)
     {
-        if (lookVector.sqrMagnitude > 0 && buttonState == ButtonState.WasPressed)
+        if (buttonState == ButtonState.WasPressed)
         {
             ShipGunShot shot;
 
             if (powerWeapon != null)
             {
                 // Shoot power weapon & drop it
-                shot = powerWeapon.Shoot(transform.position, lookVector);
+                shot = powerWeapon.Shoot(transform.position, transform.up);
                 powerWeapon = null;
             }
             else
             {
-                shot = defaultWeapon.Shoot(transform.position, lookVector);
+                shot = defaultWeapon.Shoot(transform.position, transform.up);
             }
             
             Physics2D.IgnoreCollision(shot.Collider, collider);
