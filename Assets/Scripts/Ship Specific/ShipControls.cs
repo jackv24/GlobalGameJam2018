@@ -46,6 +46,9 @@ public class ShipControls : Controllable
 
     [SerializeField]
     private ShipGun defaultWeapon;
+
+    [SerializeField]
+    private Transform shotOrigin;
     #endregion
 
     private void Awake()
@@ -57,7 +60,8 @@ public class ShipControls : Controllable
         if (this.resourceBank == null)
             throw new System.Exception("ShipControls script requires a ResourceBank script to be present somewhere in the parent hierarchy");
 
-        this.defaultWeapon = GetComponent<ShipGun>();
+        if (defaultWeapon == null)
+            this.defaultWeapon = GetComponent<ShipGun>();
         if (this.defaultWeapon == null)
             throw new System.MissingFieldException("ShipControls script requires a default weapon");
 
@@ -170,12 +174,12 @@ public class ShipControls : Controllable
             if (powerWeapon != null)
             {
                 // Shoot power weapon & drop it
-                shot = powerWeapon.Shoot(transform.position, transform.up);
+                shot = powerWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
                 powerWeapon = null;
             }
             else
             {
-                shot = defaultWeapon.Shoot(transform.position, transform.up);
+                shot = defaultWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
             }
             
             Physics2D.IgnoreCollision(shot.Collider, collider);
