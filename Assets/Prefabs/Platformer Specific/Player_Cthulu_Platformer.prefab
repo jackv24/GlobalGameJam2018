@@ -293,6 +293,8 @@ MonoBehaviour:
     type: 2}
   muzzle: {fileID: 4767999537123758}
   fireRate: 2
+  muzzleFlashPrefab: {fileID: 1193586546445666, guid: fdfe07962a2f3344598958de731471d5,
+    type: 2}
   fireSound:
     clip: {fileID: 8300000, guid: 21d937d5cf481764f85492f17615dc48, type: 3}
     pitchMin: 0.85

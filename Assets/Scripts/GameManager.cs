@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     private List<ShipControls> playerShips = new List<ShipControls>();
 
+    public PlayerLoadout[] playerLoadouts;
+
     private void Awake()
     {
         Instance = this;
@@ -208,6 +210,11 @@ public class GameManager : MonoBehaviour
             int num = i + 1;
 
             GameObject playerObj = Instantiate(playerPrefab);
+
+            PlayerInput playerInput = playerObj.GetComponent<PlayerInput>();
+            if (playerInput)
+                playerInput.SpawnLoadout(playerLoadouts[i]);
+
             GameObject cameraObj = Instantiate(cameraPrefab, playerObj.transform);
 
             destroyOnEnd.Add(playerObj);
@@ -223,8 +230,6 @@ public class GameManager : MonoBehaviour
 
             cameraObj.name = "Camera " + num;
             playerObj.name = "Player " + num;
-
-            PlayerInput playerInput = playerObj.GetComponent<PlayerInput>();
 
             if (playerInput)
             {
@@ -279,4 +284,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+}
+
+[System.Serializable]
+public class PlayerLoadout
+{
+    public GameObject platformerPrefab;
+    public GameObject shipPrefab;
 }

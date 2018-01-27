@@ -186,6 +186,8 @@ MonoBehaviour:
     type: 2}
   muzzle: {fileID: 4305118659409184}
   fireRate: 2
+  muzzleFlashPrefab: {fileID: 1193586546445666, guid: fdfe07962a2f3344598958de731471d5,
+    type: 2}
   fireSound:
     clip: {fileID: 8300000, guid: 21d937d5cf481764f85492f17615dc48, type: 3}
     pitchMin: 0.85
@@ -206,7 +208,7 @@ MonoBehaviour:
   maxHealth: 10
 --- !u!114 &114317571724778090
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1865883108120778}
@@ -238,7 +240,7 @@ MonoBehaviour:
   widthSkin: 0.1
 --- !u!114 &114417909539783558
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998820672914462}
@@ -265,7 +267,7 @@ MonoBehaviour:
   animator: {fileID: 95816461962490604}
 --- !u!114 &114541988995905246
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998820672914462}
@@ -284,7 +286,7 @@ MonoBehaviour:
   _assetGuid: 89a33eb927a9ae847ab338fdeb73cb76
 --- !u!114 &114746187778114378
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458637049697170}
