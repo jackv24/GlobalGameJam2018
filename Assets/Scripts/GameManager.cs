@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject hudPrefab;
     public GameObject timerPrefab;
 
+    private List<GameObject> destroyOnEnd;
+
     [SerializeField]
     [Tooltip("Game's duration in seconds")]
     private float gameDuration = 300;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        destroyOnEnd = new List<GameObject>();
 
         if (gameWorldDimensions.x < 10 || gameWorldDimensions.y < 10)
             throw new System.Exception("GameManager GameWorldBounds x & y values must each be a minimum of 10");
@@ -86,12 +89,20 @@ public class GameManager : MonoBehaviour
     {
         SpawnPlayers();
 
+        GenerateResources();
+
         StartTimer();
     }
 
     private void EndGame()
     {
+        foreach (var obj in destroyOnEnd)
+        {
+            Destroy(obj);
+        }
+
         // TODO: Go to win screen or something
+        // This method can easily be made IEnumerator if we need to do something over time
     }
 
     private IEnumerator GameTimer(float duration)
@@ -115,7 +126,14 @@ public class GameManager : MonoBehaviour
         Timer timerObject = Instantiate(timerPrefab).GetComponent<Timer>();
         timerObject.StartTimer(this);
 
+        destroyOnEnd.Add(timerObject.gameObject);
+
         StartCoroutine(GameTimer(gameDuration));
+    }
+
+    private void GenerateResources()
+    {
+
     }
 
     private void SpawnPlayers()
@@ -126,6 +144,8 @@ public class GameManager : MonoBehaviour
 
             GameObject playerObj = Instantiate(playerPrefab);
             GameObject cameraObj = Instantiate(cameraPrefab, playerObj.transform);
+
+            destroyOnEnd.Add(playerObj);
 
             ShipControls ship = playerObj.GetComponentInChildren<ShipControls>();
             if (ship)
