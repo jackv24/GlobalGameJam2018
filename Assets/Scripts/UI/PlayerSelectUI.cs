@@ -26,6 +26,18 @@ public class PlayerSelectUI : MonoBehaviour
     {
         startPanels[0].ShowPrompt(true);
         startPrompt.SetActive(false);
+
+        for(int i = 0; i < startPanels.Length; i++)
+        {
+            int index = i;
+
+            if (index < 0)
+                index = GameManager.Instance.playerLoadouts.Length - 1;
+            else if (index >= GameManager.Instance.playerLoadouts.Length)
+                index = 0;
+
+            startPanels[i].SwitchTo(index);
+        }
     }
 
     private void Update()
