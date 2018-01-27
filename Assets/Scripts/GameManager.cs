@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
         {
             int num = i + 1;
 
-            GameObject playerObj = Instantiate(playerPrefab, new Vector3(0, 2 * i, 0), Quaternion.identity);
+            GameObject playerObj = Instantiate(playerPrefab);
             GameObject cameraObj = Instantiate(cameraPrefab, playerObj.transform);
 
             ShipControls ship = playerObj.GetComponentInChildren<ShipControls>();
@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
             {
                 playerShips.Add(ship);
                 ship.OnTransmissionPing += OnShipPing;
+
+                ship.gameObject.transform.position = new Vector3(i * 5, 0, 0);
             }
 
             cameraObj.name = "Camera " + num;
