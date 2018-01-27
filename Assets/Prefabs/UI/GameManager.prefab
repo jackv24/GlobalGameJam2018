@@ -111,8 +111,11 @@ MonoBehaviour:
   hudPrefab: {fileID: 1397417454575760, guid: d7958f6ca916f8d4f97e4d5bd8a43954, type: 2}
   timerPrefab: {fileID: 1217492416455182, guid: 06c83513734319c45950078b809b19a9,
     type: 2}
+  resourcePrefab: {fileID: 1806980955116278, guid: 00007a68d35bd48458435259ecbb442d,
+    type: 2}
   gameDuration: 300
-  gameWorldDimensions: {x: 100, y: 80}
+  resourceCount: 5000
+  gameWorldDimensions: {x: 500, y: 300}
   borderPrefab: {fileID: 1921034795112896, guid: 8a3b6d9fd8cb01a40ae8c8952e7af8a5,
     type: 2}
   playerLoadouts:

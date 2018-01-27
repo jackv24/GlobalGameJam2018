@@ -8,6 +8,12 @@ public class Resource : MonoBehaviour
     [SerializeField]
     [Range(0, 100)]
     private int value;
+
+    public int Value
+    {
+        get { return value; }
+        set { this.value = value; }
+    }
     #endregion
 
 
@@ -16,10 +22,8 @@ public class Resource : MonoBehaviour
     /// </summary>
     public int Consume()
     {
-        // Temporary: add to resource object pool
-
         // Despawn this object
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
 
         // Return the resource value
         return value;
