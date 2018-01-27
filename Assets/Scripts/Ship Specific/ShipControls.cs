@@ -26,7 +26,7 @@ public class ShipControls : Controllable
     private Collider2D[] pingResourceCache = new Collider2D[64];
     private Dictionary<ShipControls, Vector2> enemyPings;
 
-    private Vector2 lookVector;
+    private float lookAngle;
 
     [SerializeField]
     private float maximumVelocity = 10;
@@ -46,6 +46,9 @@ public class ShipControls : Controllable
 
     [SerializeField]
     private ShipGun defaultWeapon;
+
+    [SerializeField]
+    private Transform shotOrigin;
     #endregion
 
     private void Awake()
@@ -57,7 +60,8 @@ public class ShipControls : Controllable
         if (this.resourceBank == null)
             throw new System.Exception("ShipControls script requires a ResourceBank script to be present somewhere in the parent hierarchy");
 
-        this.defaultWeapon = GetComponent<ShipGun>();
+        if (defaultWeapon == null)
+            this.defaultWeapon = GetComponent<ShipGun>();
         if (this.defaultWeapon == null)
             throw new System.MissingFieldException("ShipControls script requires a default weapon");
 
@@ -128,10 +132,16 @@ public class ShipControls : Controllable
         movementVector = inputVector;
     }
 
+    private Vector2 GetLookVector()
+    {
+        return new Vector2(Mathf.Sin(Mathf.Deg2Rad * lookAngle), Mathf.Cos(Mathf.Deg2Rad * lookAngle));
+    }
+
     public override void Look(Vector2 inputVector)
     {
-        // TODO: Slerp values?
-        lookVector = inputVector;
+        lookAngle = Mathf.LerpAngle(lookAngle, Vector2.SignedAngle(Vector2.up, inputVector), inputVector.sqrMagnitude * 0.1f);
+        
+        rigidbody2D.MoveRotation(lookAngle);
     }
 
     /// <summary>
@@ -157,19 +167,19 @@ public class ShipControls : Controllable
 
     public override void Shoot(ButtonState buttonState)
     {
-        if (lookVector.sqrMagnitude > 0 && buttonState == ButtonState.WasPressed)
+        if (buttonState == ButtonState.WasPressed)
         {
             ShipGunShot shot;
 
             if (powerWeapon != null)
             {
                 // Shoot power weapon & drop it
-                shot = powerWeapon.Shoot(transform.position, lookVector);
+                shot = powerWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
                 powerWeapon = null;
             }
             else
             {
-                shot = defaultWeapon.Shoot(transform.position, lookVector);
+                shot = defaultWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
             }
             
             Physics2D.IgnoreCollision(shot.Collider, collider);
