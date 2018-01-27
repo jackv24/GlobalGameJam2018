@@ -20,6 +20,8 @@ public class PlayerSelectUI : MonoBehaviour
     [Space()]
     public GameObject startPrompt;
 
+    private List<PlayerActions> playerActions = new List<PlayerActions>();
+
     private void Start()
     {
         startPanels[0].ShowPrompt(true);
@@ -28,6 +30,37 @@ public class PlayerSelectUI : MonoBehaviour
 
     private void Update()
     {
+        for(int i = 0; i < playerActions.Count; i++)
+        {
+            int index = playerActions[i].loadoutIndex;
+            int maxIndex = GameManager.Instance.playerLoadouts.Length - 1;
+
+            bool pressed = false;
+
+            if(playerActions[i].Left.WasPressed || playerActions[i].AltLeft.WasPressed)
+            {
+                index--;
+                pressed = true;
+            }
+            else if (playerActions[i].Right.WasPressed || playerActions[i].AltRight.WasPressed)
+            {
+                index++;
+                pressed = true;
+            }
+
+            if (pressed)
+            {
+                if (index < 0)
+                    index = maxIndex - 1;
+                else if (index > maxIndex)
+                    index = 0;
+
+                startPanels[i].SwitchTo(index);
+
+                playerActions[i].loadoutIndex = index;
+            }
+        }
+
         if(addedKeyboard)
         {
             if (Input.GetKeyDown(KeyCode.Return))
@@ -46,7 +79,6 @@ public class PlayerSelectUI : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-        
 
         if (currentStartPanel < startPanels.Length)
         {
@@ -63,14 +95,18 @@ public class PlayerSelectUI : MonoBehaviour
                 {
                     boundDevices.Add(device);
 
-                    GameManager.Instance.AddPlayerControl(device);
+                    PlayerActions action = GameManager.Instance.AddPlayerControl(device);
+                    playerActions.Add(action);
+                    action.loadoutIndex = currentStartPanel < GameManager.Instance.playerLoadouts.Length ? currentStartPanel : GameManager.Instance.playerLoadouts.Length - 1;
 
                     bound = true;
                 }
             }
             else if(!addedKeyboard && Input.GetKeyDown(KeyCode.Return))
             {
-                GameManager.Instance.AddPlayerControl(null);
+                PlayerActions action = GameManager.Instance.AddPlayerControl(null);
+                playerActions.Add(action);
+                action.loadoutIndex = currentStartPanel < GameManager.Instance.playerLoadouts.Length ? currentStartPanel : GameManager.Instance.playerLoadouts.Length - 1;
 
                 addedKeyboard = true;
                 bound = true;

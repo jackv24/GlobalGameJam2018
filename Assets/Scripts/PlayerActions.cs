@@ -5,6 +5,8 @@ using InControl;
 
 public class PlayerActions : PlayerActionSet
 {
+    public int loadoutIndex = 0;
+
     public PlayerAction Left;
     public PlayerAction Right;
     public PlayerAction Up;

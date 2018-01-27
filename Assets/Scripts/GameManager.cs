@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         SetupWorldBorders();
     }
 
-    public void AddPlayerControl(InputDevice device)
+    public PlayerActions AddPlayerControl(InputDevice device)
     {
         PlayerActions actions = new PlayerActions();
         actions.SetupBindings(device == null);
@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
             actions.IncludeDevices.Add(device);
 
         playerControls.Add(actions);
+
+        return actions;
     }
 
     private void SetupWorldBorders()
@@ -213,7 +215,7 @@ public class GameManager : MonoBehaviour
 
             PlayerInput playerInput = playerObj.GetComponent<PlayerInput>();
             if (playerInput)
-                playerInput.SpawnLoadout(playerLoadouts[i]);
+                playerInput.SpawnLoadout(playerLoadouts[playerControls[i].loadoutIndex]);
 
             GameObject cameraObj = Instantiate(cameraPrefab, playerObj.transform);
 
