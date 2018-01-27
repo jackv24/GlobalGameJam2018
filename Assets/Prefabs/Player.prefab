@@ -80,6 +80,7 @@ MonoBehaviour:
   platformerPrefab: {fileID: 1998820672914462, guid: 89a33eb927a9ae847ab338fdeb73cb76,
     type: 2}
   shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39, type: 2}
+  cameraRender: {fileID: 0}
   followTarget: {fileID: 0}
 --- !u!114 &114667604705849112
 MonoBehaviour:
