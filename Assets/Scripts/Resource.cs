@@ -8,6 +8,12 @@ public class Resource : MonoBehaviour
     [SerializeField]
     [Range(0, 100)]
     private int value;
+
+    public int Value
+    {
+        get { return value; }
+        set { this.value = value; }
+    }
     #endregion
 
 

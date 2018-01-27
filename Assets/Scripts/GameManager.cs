@@ -14,12 +14,18 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject hudPrefab;
     public GameObject timerPrefab;
+    public GameObject resourcePrefab;
 
     private List<GameObject> destroyOnEnd;
 
     [SerializeField]
     [Tooltip("Game's duration in seconds")]
     private float gameDuration = 300;
+
+    [SerializeField]
+    [Range(1000, 50000)]
+    [Tooltip("The number of resources to be in play at one time")]
+    private uint resourceCount = 1000;
 
     [SerializeField]
     private Vector2 gameWorldDimensions;
@@ -41,6 +47,9 @@ public class GameManager : MonoBehaviour
 
         if (borderPrefab == null)
             throw new System.Exception("GameManager must have a Border Prefab");
+
+        if (resourcePrefab == null || resourcePrefab.GetComponent<Resource>() == null)
+            throw new System.Exception("GameManager must have a Resource Prefab containing a Resource script");
 
         SetupWorldBorders();
     }
@@ -87,10 +96,16 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        StartCoroutine(InitializeGame());
+    }
+
+    private IEnumerator InitializeGame()
+    {
+        // TODO: Display loading screen while generating resources??
+
+        yield return GenerateResources();
+
         SpawnPlayers();
-
-        GenerateResources();
-
         StartTimer();
     }
 
@@ -131,9 +146,57 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameTimer(gameDuration));
     }
 
-    private void GenerateResources()
+    private IEnumerator GenerateResources()
     {
+        var stopwatch = new System.Diagnostics.Stopwatch();
+        stopwatch.Start();
 
+        // Get top right corner of the play region, with a padding of 3 units
+        Vector2 topRightCorner = (gameWorldDimensions / 2) - new Vector2(3, 3);
+
+        // Generate clusters of resources
+        uint spawnCount = 0;
+        while (spawnCount < resourceCount)
+        {
+            // Choose a random location to spawn resources
+            Vector2 clusterPosition = new Vector2(Random.Range(-topRightCorner.x, topRightCorner.x), 
+                                                    Random.Range(-topRightCorner.y, topRightCorner.y));
+
+            // Spawn up to 50 resources in this cluster
+            int resourcesInCluster = Random.Range(20, 50);
+            if (spawnCount + resourcesInCluster > resourceCount)
+                resourcesInCluster = (int)resourceCount - (int)spawnCount;
+
+            for (int i = 0; i < resourcesInCluster; i++)
+            {
+                Vector2 offset = Random.insideUnitCircle * 3;
+                Vector2 resourcePosition = clusterPosition + offset;
+
+                GameObject resourceObject = ObjectPooler.GetPooledObject(resourcePrefab);
+                resourceObject.transform.position = resourcePosition;
+                Resource resourceScript = resourceObject.GetComponent<Resource>();
+
+                // Magic values for resource worth, because why not. Separate this later if needed
+                resourceScript.Value = Random.Range(2, 15);
+                resourceObject.transform.localScale = Vector3.one * resourceScript.Value / 10;
+            }
+
+            spawnCount += (uint)resourcesInCluster;
+
+            // Attempt to maintain stable framerate through loading screen
+            stopwatch.Stop();
+            if (stopwatch.Elapsed.Seconds > 0.033f)
+            {
+                Debug.Log("Yielding in GenerateResources()");
+                yield return null;
+
+                stopwatch.Reset();
+            }
+            
+            stopwatch.Start();
+        }
+
+        stopwatch.Stop();
     }
 
     private void SpawnPlayers()
