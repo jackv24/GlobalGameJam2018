@@ -123,6 +123,8 @@ public class PlayerInput : MonoBehaviour
                 Rigidbody2D body = platformerObj.GetComponentInChildren<Rigidbody2D>();
                 if (body && body.gameObject != platformerObj)
                     body.transform.localPosition = Vector3.zero;
+
+                body.velocity = Vector2.zero;
             }
         }
 

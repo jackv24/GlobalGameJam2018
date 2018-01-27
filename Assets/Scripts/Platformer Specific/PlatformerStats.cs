@@ -10,6 +10,20 @@ public class PlatformerStats : MonoBehaviour
     public int currentHealth = 10;
     public int maxHealth = 10;
 
+    private PlatformerAnimation anim;
+
+    private Coroutine dieRoutine = null;
+
+    private void Awake()
+    {
+        anim = GetComponent<PlatformerAnimation>();
+    }
+
+    private void OnEnable()
+    {
+        anim.isAlive = true;
+    }
+
     private void Start()
     {
         SendHealthEvent();
@@ -27,22 +41,34 @@ public class PlatformerStats : MonoBehaviour
 
     public void Die()
     {
-        ShipInterior ship = transform.parent.GetComponentInChildren<ShipInterior>();
-        if (ship)
-            Destroy(ship.gameObject);
+        anim.isAlive = false;
 
-        PlayerInput player = GetComponentInParent<PlayerInput>();
-        if(player)
-        {
-            player.DieReset();
-        }
-
-        currentHealth = maxHealth;
+        if(dieRoutine == null)
+            dieRoutine = StartCoroutine(DieDelayed(3.0f));
     }
 
     public void SendHealthEvent()
     {
         if (OnUpdateHealth != null)
             OnUpdateHealth(currentHealth, maxHealth);
+    }
+
+    IEnumerator DieDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        ShipInterior ship = transform.parent.GetComponentInChildren<ShipInterior>();
+        if (ship)
+            Destroy(ship.gameObject);
+
+        PlayerInput player = GetComponentInParent<PlayerInput>();
+        if (player)
+        {
+            player.DieReset();
+        }
+
+        currentHealth = maxHealth;
+
+        dieRoutine = null;
     }
 }

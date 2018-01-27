@@ -12,6 +12,8 @@ public class PlatformerAnimation : MonoBehaviour
 
     public bool isShooting = false;
 
+    public bool isAlive = true;
+
     public Animator animator;
 
     private void Update()
@@ -22,6 +24,7 @@ public class PlatformerAnimation : MonoBehaviour
             animator.SetFloat("fallSpeed", fallSpeed);
             animator.SetBool("grounded", isGrounded);
             animator.SetBool("shooting", isShooting);
+            animator.SetBool("isAlive", isAlive);
         }
     }
 
