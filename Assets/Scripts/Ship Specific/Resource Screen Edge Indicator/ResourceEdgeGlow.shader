@@ -3,6 +3,10 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_EffectAlpha("Effect Alpha", Float) = 0
+		_PositionCount("Position Count", Int) = 0
+		_TexWidth("Texture Width", Int) = 0
+		_TexHeight("Texture Height", Int) = 0
 	}
 	SubShader
 	{
@@ -12,8 +16,7 @@
 		Pass
 		{
 			CGPROGRAM
-// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
-#pragma exclude_renderers d3d11 gles
+
 			#pragma vertex vert
 			#pragma fragment frag
 			
@@ -40,27 +43,17 @@
 			}
 			
 			sampler2D _MainTex;
-			//float4[] _Positions;
-			//float _EffectAlpha;
-			//int _PositionCount;
-			//int _TexWidth;
-			//int _TexHeight;
+			float4 _Positions[64];
+			float _EffectAlpha;
+			int _PositionCount;
+			int _TexWidth;
+			int _TexHeight;
 
-			fixed4 frag (v2f i) : SV_Target
+			float4 frag (v2f i) : SV_Target
 			{
-				//float4 screenSpacePos = ComputeScreenPos(i.vertex);
-				return fixed4(1, 1, 1, 1);
+				float4 col = tex2D(_MainTex, i.uv);
+				col *= float4(i.uv.x, i.uv.y, 0, 1);
 
-				float x = screenSpacePos.x / _TexWidth;
-				float y = screenSpacePos.y / _TexHeight;
-				
-				
-				
-				
-				
-				fixed4 col = tex2D(_MainTex, i.uv);
-				// just invert the colors
-				col = 1 - col;
 				return col;
 			}
 			ENDCG
