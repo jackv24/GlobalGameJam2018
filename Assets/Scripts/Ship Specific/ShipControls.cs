@@ -200,7 +200,21 @@ public class ShipControls : Controllable
 
     private void FixedUpdate()
     {
-        Vector2 desiredVelocity = rigidbody2D.velocity + movementVector * impulseMagnitude * Time.fixedDeltaTime;
+        float movementDot = Vector2.Dot(transform.up, movementVector);
+        float movementModifier = 0;
+
+        if (movementDot >= 0)
+        {
+            // Map modifier to range 0.3f to 1
+            movementModifier = movementDot * 0.7f + 0.3f;
+        }
+        else
+        {
+            // Map modifier to range 0.3f to 0.8f
+            movementModifier = -movementDot * 0.5f + 0.3f;
+        }
+
+        Vector2 desiredVelocity = rigidbody2D.velocity + movementVector * movementModifier * impulseMagnitude * Time.fixedDeltaTime;
 
         if (desiredVelocity.sqrMagnitude > maximumVelocity * maximumVelocity)
             desiredVelocity = desiredVelocity.normalized * maximumVelocity;
