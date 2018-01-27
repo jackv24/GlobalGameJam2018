@@ -51,7 +51,7 @@ public class PlayerSelectUI : MonoBehaviour
             if (pressed)
             {
                 if (index < 0)
-                    index = maxIndex - 1;
+                    index = maxIndex;
                 else if (index > maxIndex)
                     index = 0;
 

@@ -12,6 +12,7 @@ public class PlayerStartPanel : MonoBehaviour
 
     [Space()]
     public RectTransform profileContainer;
+    public CanvasGroup group;
     public float[] profileStopPoint = new float[] { 0, -960, -1920 };
     public float lerpTime = 0.25f;
 
@@ -34,6 +35,8 @@ public class PlayerStartPanel : MonoBehaviour
             if (selectSound)
                 SoundManager.PlaySound(selectSound, transform.position);
         }
+
+        group.alpha = value ? 1.0f : 0.25f;
 
         ShowPrompt(!value);
     }

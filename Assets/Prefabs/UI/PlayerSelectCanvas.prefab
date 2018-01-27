@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114660119944078688}
   - component: {fileID: 114182277144043832}
   - component: {fileID: 114389827097618174}
+  - component: {fileID: 225781665354674190}
   m_Layer: 5
   m_Name: LayoutGroup
   m_TagString: Untagged
@@ -160,6 +161,7 @@ GameObject:
   - component: {fileID: 114293566068082280}
   - component: {fileID: 114893699900339352}
   - component: {fileID: 114567956440474668}
+  - component: {fileID: 225256441311687568}
   m_Layer: 5
   m_Name: LayoutGroup
   m_TagString: Untagged
@@ -296,6 +298,7 @@ GameObject:
   - component: {fileID: 114824073996433690}
   - component: {fileID: 114252080591223916}
   - component: {fileID: 114481219590459146}
+  - component: {fileID: 225894153125440112}
   m_Layer: 5
   m_Name: LayoutGroup
   m_TagString: Untagged
@@ -985,6 +988,7 @@ GameObject:
   - component: {fileID: 114864006988555510}
   - component: {fileID: 114761748300336082}
   - component: {fileID: 114491806286915276}
+  - component: {fileID: 225114371252177526}
   m_Layer: 5
   m_Name: LayoutGroup
   m_TagString: Untagged
@@ -1228,6 +1232,7 @@ MonoBehaviour:
   selectedObject: {fileID: 1575805078455142}
   selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
   profileContainer: {fileID: 224119101387837802}
+  group: {fileID: 225894153125440112}
   profileStopPoint:
   - 0
   - -960
@@ -2963,6 +2968,7 @@ MonoBehaviour:
   selectedObject: {fileID: 1848934994434424}
   selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
   profileContainer: {fileID: 224960158015254454}
+  group: {fileID: 225781665354674190}
   profileStopPoint:
   - 0
   - -960
@@ -4523,6 +4529,7 @@ MonoBehaviour:
   selectedObject: {fileID: 1010113307464242}
   selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
   profileContainer: {fileID: 224031965128286050}
+  group: {fileID: 225256441311687568}
   profileStopPoint:
   - 0
   - -960
@@ -4916,6 +4923,7 @@ MonoBehaviour:
   selectedObject: {fileID: 1380485681839090}
   selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
   profileContainer: {fileID: 224370719201840938}
+  group: {fileID: 225114371252177526}
   profileStopPoint:
   - 0
   - -960
@@ -7636,3 +7644,47 @@ RectTransform:
   m_AnchoredPosition: {x: 423, y: -8}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225114371252177526
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827507590419784}
+  m_Enabled: 1
+  m_Alpha: 0.25
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225256441311687568
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198904810235512}
+  m_Enabled: 1
+  m_Alpha: 0.25
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225781665354674190
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1015220651535246}
+  m_Enabled: 1
+  m_Alpha: 0.25
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225894153125440112
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270548078625692}
+  m_Enabled: 1
+  m_Alpha: 0.25
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114341091532074336}
   - component: {fileID: 114160309698187548}
   - component: {fileID: 114429303801158474}
+  - component: {fileID: 225738098711985224}
   m_Layer: 5
   m_Name: LayoutGroup
   m_TagString: Untagged
@@ -700,6 +701,7 @@ MonoBehaviour:
   selectedObject: {fileID: 1189745475026634}
   selectSound: {fileID: 8300000, guid: ca686115d7dee734eb704e64f68bda40, type: 3}
   profileContainer: {fileID: 224586899647612730}
+  group: {fileID: 225738098711985224}
   profileStopPoint:
   - 0
   - -960
@@ -1804,3 +1806,14 @@ RectTransform:
   m_AnchoredPosition: {x: -431, y: -8}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225738098711985224
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031262799721742}
+  m_Enabled: 1
+  m_Alpha: 0.25
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
