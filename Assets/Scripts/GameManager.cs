@@ -162,8 +162,10 @@ public class GameManager : MonoBehaviour
             Vector2 clusterPosition = new Vector2(Random.Range(-topRightCorner.x, topRightCorner.x), 
                                                     Random.Range(-topRightCorner.y, topRightCorner.y));
 
-            // Spawn up to 20 resources in this cluster
-            int resourcesInCluster = Random.Range(5, 20);
+            // Spawn up to 12 resources in this cluster, or 30 if it is a large cluster
+            bool largeCluster = Random.Range(0.0f, 10.0f) < 0.05f; // 5% chance
+
+            int resourcesInCluster = largeCluster ? Random.Range(20, 30) : Random.Range(5, 12);
             if (spawnCount + resourcesInCluster > resourceCount)
                 resourcesInCluster = (int)resourceCount - (int)spawnCount;
 
