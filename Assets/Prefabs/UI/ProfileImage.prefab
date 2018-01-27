@@ -166,7 +166,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Secret Agent
 
-    Ctulhu'
+    Ctulhu
+
+    <size=36>Lanky Boi</size>'
 --- !u!222 &222572684262155700
 CanvasRenderer:
   m_ObjectHideFlags: 1

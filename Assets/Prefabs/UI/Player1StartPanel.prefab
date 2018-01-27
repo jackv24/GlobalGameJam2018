@@ -458,7 +458,9 @@ MonoBehaviour:
           y: 0
           width: 0
           height: 0
-        _stringValue: Cinder-ella
+        _stringValue: 'Cinder-ella
+
+          <size=36>Woah, that''s hot</size>'
         _vector2Value: {x: 0, y: 0}
         _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
@@ -610,7 +612,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Cpt.
 
-    Bubblegum'
+    Bubblegum
+
+    <size=36>Dramatic Boi</size>'
 --- !u!114 &114145848951943026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,7 +862,9 @@ MonoBehaviour:
           height: 0
         _stringValue: 'Cpt.
 
-          Bubblegum'
+          Bubblegum
+
+          <size=36>Dramatic Boi</size>'
         _vector2Value: {x: 0, y: 0}
         _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
@@ -1078,7 +1084,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Cinder-ella
+  m_Text: 'Cinder-ella
+
+    <size=36>Woah, that''s hot</size>'
 --- !u!114 &114428338182892920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1247,7 +1255,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Secret Agent
 
-    Ctulhu'
+    Ctulhu
+
+    <size=36>Lanky Boi</size>'
 --- !u!114 &114710992670206090
 MonoBehaviour:
   m_ObjectHideFlags: 1
