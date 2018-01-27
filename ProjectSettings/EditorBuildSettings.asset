@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 08bc48614d8aedc4aab1da5a80ecc2e2
   - enabled: 1
-    path: Assets/Scenes/Testing/Jack/JackTest.unity
-    guid: f828de699d20b3345b1fc423468f8daa
+    path: Assets/Scenes/Game.unity
+    guid: a87a0d0054263584ea6a841210e60d98

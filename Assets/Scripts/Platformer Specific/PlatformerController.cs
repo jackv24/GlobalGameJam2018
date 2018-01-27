@@ -26,12 +26,14 @@ public class PlatformerController : Controllable
     private Rigidbody2D body;
     private BoxCollider2D col;
     private PlatformerAttack attack;
+    private PlatformerAnimation anim;
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         attack = GetComponent<PlatformerAttack>();
+        anim = GetComponent<PlatformerAnimation>();
     }
 
     private void FixedUpdate()
@@ -69,6 +71,8 @@ public class PlatformerController : Controllable
             localScale.x *= -1;
             transform.localScale = localScale;
         }
+
+        anim.speed = Mathf.Abs(inputDirection);
     }
 
     public override void Jump(ButtonState buttonState)
