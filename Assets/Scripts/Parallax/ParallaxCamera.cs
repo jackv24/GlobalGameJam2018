@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class ParallaxCamera : MonoBehaviour
 {
+    private new Camera camera;
     private ParallaxObject[] parallaxLayers;
 
     private void Awake()
     {
+        this.camera = GetComponent<Camera>();
         parallaxLayers = GameObject.FindObjectsOfType<ParallaxObject>();
     }
 
-    private void OnPreRender()
+    private void OnPreCull()
     {
         foreach (var layer in parallaxLayers)
         {
-            float amount = 1 / layer.DistanceFromCamera;
-            layer.transform.position = new Vector2(this.transform.position.x * -amount + layer.Offset.x, this.transform.position.y * -amount + layer.Offset.y);
+            layer.PositionRelativeTo(camera);
         }
     }
 }
