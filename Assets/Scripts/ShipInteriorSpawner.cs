@@ -52,11 +52,11 @@ public class ShipInteriorSpawner : MonoBehaviour
                     letSpawn = true;
                     other.letSpawn = true;
 
-                    self.OnDestroyed -= destroyEvent;
+                    self.OnDisabled -= destroyEvent;
                 };
 
-                interior.OnDestroyed += destroyEvent;
-                otherInterior.OnDestroyed += destroyEvent;
+                interior.OnDisabled += destroyEvent;
+                otherInterior.OnDisabled += destroyEvent;
 
                 PlayerInput selfInput = GetComponentInParent<PlayerInput>();
                 PlayerInput otherInput = collision.gameObject.GetComponentInParent<PlayerInput>();

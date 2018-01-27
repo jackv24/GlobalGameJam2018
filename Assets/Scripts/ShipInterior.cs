@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShipInterior : MonoBehaviour
 {
     public delegate void DestroyEvent(ShipInterior self);
-    public event DestroyEvent OnDestroyed;
+    public event DestroyEvent OnDisabled;
 
     public Transform spawnPoint;
 
@@ -13,7 +13,7 @@ public class ShipInterior : MonoBehaviour
 
     public ShipInterior otherShipInterior;
 
-    void OnDestroy()
+    void OnDisable()
     {
         if(otherShipInterior)
             Destroy(otherShipInterior.gameObject);
@@ -21,7 +21,7 @@ public class ShipInterior : MonoBehaviour
         if (owner)
             owner.SwitchMode();
 
-        if (OnDestroyed != null)
-            OnDestroyed(this);
+        if (OnDisabled != null)
+            OnDisabled(this);
     }
 }
