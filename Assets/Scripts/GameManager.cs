@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject resourcePrefab;
 
     private List<GameObject> destroyOnEnd;
+    private List<ResourcePinger> resourcePingObjects;
+    public List<ResourcePinger> ResourcePingObjects { get { return resourcePingObjects; } }
 
     [SerializeField]
     [Tooltip("Game's duration in seconds")]
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         destroyOnEnd = new List<GameObject>();
+        resourcePingObjects = new List<ResourcePinger>();
 
         if (gameWorldDimensions.x < 10 || gameWorldDimensions.y < 10)
             throw new System.Exception("GameManager GameWorldBounds x & y values must each be a minimum of 10");
@@ -166,10 +169,10 @@ public class GameManager : MonoBehaviour
             Vector2 clusterPosition = new Vector2(Random.Range(-topRightCorner.x, topRightCorner.x), 
                                                     Random.Range(-topRightCorner.y, topRightCorner.y));
 
-            // Spawn up to 12 resources in this cluster, or 30 if it is a large cluster
-            bool largeCluster = Random.Range(0.0f, 10.0f) < 0.05f; // 5% chance
+            // Spawn up to 6 resources in this cluster, or 30 if it is a large cluster
+            bool largeCluster = Random.Range(0.0f, 10.0f) < 0.15f; // 5% chance
 
-            int resourcesInCluster = largeCluster ? Random.Range(20, 30) : Random.Range(5, 12);
+            int resourcesInCluster = largeCluster ? Random.Range(15, 30) : Random.Range(2, 6);
             if (spawnCount + resourcesInCluster > resourceCount)
                 resourcesInCluster = (int)resourceCount - (int)spawnCount;
 
@@ -185,6 +188,15 @@ public class GameManager : MonoBehaviour
                 // Magic values for resource worth, because why not. Separate this later if needed
                 resourceScript.Value = Random.Range(2, 15);
                 resourceObject.transform.localScale = Vector3.one * resourceScript.Value / 10;
+
+                // Spawn tracker for large clusters
+                if (largeCluster && i == 0)
+                {
+                    Debug.Log(string.Concat("Spawning a ResourcePinger at ", resourceObject.transform.position));
+                    var pinger = resourceObject.AddComponent<ResourcePinger>();
+                    pinger.OnDespawn += RemovePingerTracker;
+                    resourcePingObjects.Add(pinger);
+                }
             }
 
             spawnCount += (uint)resourcesInCluster;
@@ -203,6 +215,11 @@ public class GameManager : MonoBehaviour
         }
 
         stopwatch.Stop();
+    }
+
+    private void RemovePingerTracker(ResourcePinger source)
+    {
+        resourcePingObjects.Remove(source);
     }
 
     private void SpawnPlayers()

@@ -17,13 +17,11 @@ public class ShipControls : Controllable
     #region Fields & Properties
     private new Rigidbody2D rigidbody2D;
     private ResourceBank resourceBank;
-    private ShipResourceGlowEffect glowEffect;
 
     private new Collider2D collider;
 
     private ShipGun powerWeapon;
     private float lastPingTime;
-    private Collider2D[] pingResourceCache = new Collider2D[64];
     private Dictionary<ShipControls, Vector2> enemyPings;
 
     private float lookAngle;
@@ -43,6 +41,11 @@ public class ShipControls : Controllable
     [SerializeField]
     [Range(10, 100)]
     private float transmissionPingResourceRadius = 30;
+
+    [SerializeField]
+    private GameObject resourceArrowPrefab;
+
+    ArrowCamera arrowCamera;
 
     [SerializeField]
     private ShipGun defaultWeapon;
@@ -71,9 +74,7 @@ public class ShipControls : Controllable
 
     private void Start()
     {
-        // Commence hacky shit to get glow post processor
-        PlayerInput inputScript = GetComponentInParent<PlayerInput>();
-        glowEffect = inputScript.cameraRender.GetComponent<ShipResourceGlowEffect>();
+        arrowCamera = transform.parent.GetComponentInChildren<ArrowCamera>();
     }
 
     #region Collision Detection
@@ -152,11 +153,8 @@ public class ShipControls : Controllable
         if (buttonState == ButtonState.WasPressed
             && Time.time - lastPingTime >= transmissionPingCooldown)
         {
-            int resourcesInRange = Physics2D.OverlapCircleNonAlloc(transform.position, transmissionPingResourceRadius, pingResourceCache);
-
-            glowEffect.Set(resourcesInRange, pingResourceCache.Select(resource => (Vector2)resource.transform.position).ToArray());
-
-
+            arrowCamera.StartPing(transform.position, transmissionPingResourceRadius, resourceArrowPrefab);
+            
             // Raise ping event
             if (OnTransmissionPing != null)
                 OnTransmissionPing(this);
