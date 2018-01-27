@@ -32,7 +32,7 @@ public class PlayerSelectUI : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                GameManager.Instance.SpawnPlayers();
+                GameManager.Instance.StartGame();
 
                 gameObject.SetActive(false);
             }
@@ -41,7 +41,7 @@ public class PlayerSelectUI : MonoBehaviour
         {
             if (boundDevices[0].CommandWasPressed)
             {
-                GameManager.Instance.SpawnPlayers();
+                GameManager.Instance.StartGame();
 
                 gameObject.SetActive(false);
             }

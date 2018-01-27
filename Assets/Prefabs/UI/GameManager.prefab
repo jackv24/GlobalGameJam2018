@@ -109,6 +109,9 @@ MonoBehaviour:
   playerPrefab: {fileID: 1660428867551702, guid: 76be408c1c8890c499a8f3888b9ba3d1,
     type: 2}
   hudPrefab: {fileID: 1397417454575760, guid: d7958f6ca916f8d4f97e4d5bd8a43954, type: 2}
-  gameWorldDimensions: {x: 30, y: 30}
+  timerPrefab: {fileID: 1217492416455182, guid: 06c83513734319c45950078b809b19a9,
+    type: 2}
+  gameDuration: 300
+  gameWorldDimensions: {x: 100, y: 80}
   borderPrefab: {fileID: 1921034795112896, guid: 8a3b6d9fd8cb01a40ae8c8952e7af8a5,
     type: 2}
