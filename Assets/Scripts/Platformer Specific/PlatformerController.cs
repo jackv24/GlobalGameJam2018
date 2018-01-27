@@ -40,17 +40,24 @@ public class PlatformerController : Controllable
     {
         bool grounded = CheckGrounded();
 
+        anim.isGrounded = grounded;
+
         Vector2 velocity = body.velocity;
 
         velocity.x = moveSpeed * inputDirection;
 
         if(shouldJump)
         {
-            if(grounded && velocity.y <= 0)
+            if (grounded && velocity.y <= 0)
+            {
                 velocity.y = jumpForce;
+                anim.SetJump();
+            }
 
             shouldJump = false;
         }
+
+        anim.fallSpeed = velocity.y;
 
         body.velocity = velocity;
     }
@@ -91,6 +98,10 @@ public class PlatformerController : Controllable
         {
             case ButtonState.IsPressed:
                 attack.Shoot(Mathf.Sign(transform.localScale.x));
+                anim.isShooting = true;
+                break;
+            case ButtonState.WasReleased:
+                anim.isShooting = false;
                 break;
         }
     }

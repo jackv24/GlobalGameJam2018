@@ -108,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1220452413515850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.152071, y: 4.4495344, z: 0}
+  m_LocalPosition: {x: -22.60489, y: -1.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4107629447048648}
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070983180993292}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.700001, y: 1.7, z: 0}
+  m_LocalPosition: {x: -0.919, y: 2.463, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4775936040502562}
@@ -136,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 1617652640601874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6527, y: 0.6527, z: 0.6527}
   m_Children:
   - {fileID: 4767999537123758}
   m_Father: {fileID: 4107629447048648}
@@ -174,7 +174,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 2.82}
+  m_Offset: {x: 0, y: 1.59}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -185,7 +185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.22, y: 5.74}
+  m_Size: {x: 0.78, y: 3.69}
   m_EdgeRadius: 0
 --- !u!95 &95187776793676192
 Animator:
@@ -313,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGrounded: 0
   speed: 0
+  fallSpeed: 0
   isShooting: 0
   animator: {fileID: 95187776793676192}
 --- !u!114 &114637314562549704
@@ -456,7 +457,7 @@ MonoBehaviour:
           m_Extent: {x: 0, y: 0, z: 0}
         _colorValue: {r: 0, g: 0, b: 0, a: 0}
         _doubleValue: 0
-        _floatValue: 1
+        _floatValue: 0.6527
         _intValue: 0
         _longValue: 0
         _objectReferenceValue: {fileID: 0}
@@ -497,7 +498,63 @@ MonoBehaviour:
           height: 0
         _stringValue: 
         _vector2Value: {x: 0, y: 0}
-        _vector3Value: {x: 1, y: 1, z: 1}
+        _vector3Value: {x: 0.6527, y: 0.6527208, z: 0.6527208}
+        _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      - _path: m_LocalScale.y
+        _animationCurveValue:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 0
+          m_PostInfinity: 0
+          m_RotationOrder: 0
+        _booleanValue: 0
+        _boundsValue:
+          m_Center: {x: 0, y: 0, z: 0}
+          m_Extent: {x: 0, y: 0, z: 0}
+        _colorValue: {r: 0, g: 0, b: 0, a: 0}
+        _doubleValue: 0
+        _floatValue: 0.6527
+        _intValue: 0
+        _longValue: 0
+        _objectReferenceValue: {fileID: 0}
+        _quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+        _rectValue:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        _stringValue: 
+        _vector2Value: {x: 0, y: 0}
+        _vector3Value: {x: 0, y: 0, z: 0}
+        _vector4Value: {x: 0, y: 0, z: 0, w: 0}
+      - _path: m_LocalScale.z
+        _animationCurveValue:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 0
+          m_PostInfinity: 0
+          m_RotationOrder: 0
+        _booleanValue: 0
+        _boundsValue:
+          m_Center: {x: 0, y: 0, z: 0}
+          m_Extent: {x: 0, y: 0, z: 0}
+        _colorValue: {r: 0, g: 0, b: 0, a: 0}
+        _doubleValue: 0
+        _floatValue: 0.6527
+        _intValue: 0
+        _longValue: 0
+        _objectReferenceValue: {fileID: 0}
+        _quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+        _rectValue:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        _stringValue: 
+        _vector2Value: {x: 0, y: 0}
+        _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
     - _isExpanded: 1
       _typeName: Animator
@@ -565,7 +622,7 @@ MonoBehaviour:
           width: 0
           height: 0
         _stringValue: 
-        _vector2Value: {x: 0, y: 2.82}
+        _vector2Value: {x: 0, y: 1.59}
         _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
       - _path: m_Offset.x
@@ -609,7 +666,7 @@ MonoBehaviour:
           m_Extent: {x: 0, y: 0, z: 0}
         _colorValue: {r: 0, g: 0, b: 0, a: 0}
         _doubleValue: 0
-        _floatValue: 2.82
+        _floatValue: 1.59
         _intValue: 0
         _longValue: 0
         _objectReferenceValue: {fileID: 0}
@@ -649,7 +706,7 @@ MonoBehaviour:
           width: 0
           height: 0
         _stringValue: 
-        _vector2Value: {x: 1.22, y: 5.74}
+        _vector2Value: {x: 0.78, y: 3.69}
         _vector3Value: {x: 0, y: 0, z: 0}
         _vector4Value: {x: 0, y: 0, z: 0, w: 0}
       - _path: m_Size.x
@@ -665,7 +722,7 @@ MonoBehaviour:
           m_Extent: {x: 0, y: 0, z: 0}
         _colorValue: {r: 0, g: 0, b: 0, a: 0}
         _doubleValue: 0
-        _floatValue: 1.22
+        _floatValue: 0.78
         _intValue: 0
         _longValue: 0
         _objectReferenceValue: {fileID: 0}
@@ -693,7 +750,7 @@ MonoBehaviour:
           m_Extent: {x: 0, y: 0, z: 0}
         _colorValue: {r: 0, g: 0, b: 0, a: 0}
         _doubleValue: 0
-        _floatValue: 5.74
+        _floatValue: 3.69
         _intValue: 0
         _longValue: 0
         _objectReferenceValue: {fileID: 0}

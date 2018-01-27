@@ -8,6 +8,8 @@ public class PlatformerAnimation : MonoBehaviour
 
     public float speed = 0;
 
+    public float fallSpeed;
+
     public bool isShooting = false;
 
     public Animator animator;
@@ -17,6 +19,15 @@ public class PlatformerAnimation : MonoBehaviour
         if(animator)
         {
             animator.SetFloat("speed", speed);
+            animator.SetFloat("fallSpeed", fallSpeed);
+            animator.SetBool("grounded", isGrounded);
+            animator.SetBool("shooting", isShooting);
         }
+    }
+
+    public void SetJump()
+    {
+        if (animator)
+            animator.SetTrigger("jump");
     }
 }
