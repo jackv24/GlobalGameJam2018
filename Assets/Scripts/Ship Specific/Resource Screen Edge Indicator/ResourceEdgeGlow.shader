@@ -40,16 +40,24 @@
 			}
 			
 			sampler2D _MainTex;
-			float4[] _Positions;
-			float _EffectAlpha;
-			int _PositionCount;
-			int _TexWidth;
-			int _TexHeight;
+			//float4[] _Positions;
+			//float _EffectAlpha;
+			//int _PositionCount;
+			//int _TexWidth;
+			//int _TexHeight;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
+				//float4 screenSpacePos = ComputeScreenPos(i.vertex);
+				return fixed4(1, 1, 1, 1);
 
-
+				float x = screenSpacePos.x / _TexWidth;
+				float y = screenSpacePos.y / _TexHeight;
+				
+				
+				
+				
+				
 				fixed4 col = tex2D(_MainTex, i.uv);
 				// just invert the colors
 				col = 1 - col;

@@ -12,6 +12,14 @@ public class ShipResourceGlowEffect : MonoBehaviour
     private int resourceCount;
     private float effectAlpha = 1.0f;
 
+    private new Camera camera;
+    private RenderTexture screenRT;
+
+    private void Awake()
+    {
+        camera = GetComponent<Camera>();
+    }
+
     public void Set(int resourceCount, Vector2[] positions)
     {
         this.resourcePositions = positions;
@@ -39,19 +47,38 @@ public class ShipResourceGlowEffect : MonoBehaviour
         }
     }
 
+    //void OnPreRender()
+    //{
+    //    screenRT = RenderTexture.GetTemporary(camera.pixelWidth, camera.pixelHeight);
+    //    camera.targetTexture = screenRT;
+    //}
+    //
+    //void OnPostRender()
+    //{
+    //    postProcessor.SetTexture("_MainTex", screenRT);
+    //    Graphics.Blit(screenRT, null, postProcessor);
+    //    camera.targetTexture = null;
+    //    RenderTexture.ReleaseTemporary(screenRT);
+    //}
+
+    [ImageEffectOpaque]
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (postProcessor)
-        {
-            postProcessor.SetFloat("_EffectAlpha", effectAlpha);
-            postProcessor.SetInt("_PositionCount", resourceCount);
-            postProcessor.SetInt("_TexWidth", source.width);
-            postProcessor.SetInt("_TexHeight", source.height);
-
-            if (resourceCount > 0)
-                postProcessor.SetVectorArray("_Positions", resourcePositions.Select(pos => (Vector4)pos).ToArray());
-
-            Graphics.Blit(source, destination, postProcessor);
-        }
+        postProcessor.SetFloat("_EffectAlpha", effectAlpha);
+        postProcessor.SetInt("_PositionCount", resourceCount);
+        postProcessor.SetInt("_TexWidth", source.width);
+        postProcessor.SetInt("_TexHeight", source.height);
+    
+        if (resourceCount > 0)
+            postProcessor.SetVectorArray("_Positions", resourcePositions.Select(pos => (Vector4)pos).ToArray());
+        
+        postProcessor.SetTexture("_MainTex", source);
+        Graphics.Blit(source, null, postProcessor);
+    
+    
+        //Graphics.Blit(source, t, postProcessor);
+        //Graphics.Blit(t, destination);
+        //RenderTexture.ReleaseTemporary(t);
+        
     }
 }
