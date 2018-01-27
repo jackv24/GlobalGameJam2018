@@ -11,6 +11,12 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject hudPrefab;
 
+    [SerializeField]
+    private Vector2 gameWorldDimensions;
+
+    [SerializeField]
+    private GameObject borderPrefab;
+
     private List<PlayerActions> playerControls = new List<PlayerActions>();
 
     private List<ShipControls> playerShips = new List<ShipControls>();
@@ -18,6 +24,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        if (gameWorldDimensions.x < 10 || gameWorldDimensions.y < 10)
+            throw new System.Exception("GameManager GameWorldBounds x & y values must each be a minimum of 10");
+
+        if (borderPrefab == null)
+            throw new System.Exception("GameManager must have a Border Prefab");
+
+        SetupWorldBorders();
     }
 
     public void AddPlayerControl(InputDevice device)
@@ -29,6 +43,33 @@ public class GameManager : MonoBehaviour
             actions.IncludeDevices.Add(device);
 
         playerControls.Add(actions);
+    }
+
+    private void SetupWorldBorders()
+    {
+        GameObject topBorder = Instantiate(borderPrefab);
+        topBorder.name = "World Border (Top)";
+        topBorder.transform.position = new Vector2(0, gameWorldDimensions.y / 2 + topBorder.GetComponent<BoxCollider2D>().size.y / 2);
+        topBorder.transform.rotation = Quaternion.Euler(0, 0, 0);
+        topBorder.transform.localScale = new Vector3(gameWorldDimensions.x / topBorder.GetComponent<BoxCollider2D>().size.x, 1, 1);
+
+        GameObject bottomBorder = Instantiate(borderPrefab);
+        bottomBorder.name = "World Border (Bottom)";
+        bottomBorder.transform.position = new Vector2(0, -gameWorldDimensions.y / 2 - bottomBorder.GetComponent<BoxCollider2D>().size.y / 2);
+        bottomBorder.transform.rotation = Quaternion.Euler(0, 0, 180);
+        bottomBorder.transform.localScale = new Vector3(gameWorldDimensions.x / topBorder.GetComponent<BoxCollider2D>().size.x, 1, 1);
+
+        GameObject leftBorder = Instantiate(borderPrefab);
+        leftBorder.name = "World Border (Left)";
+        leftBorder.transform.position = new Vector2(-gameWorldDimensions.x / 2 - leftBorder.GetComponent<BoxCollider2D>().size.x / 2, 0);
+        leftBorder.transform.rotation = Quaternion.Euler(0, 0, 90);
+        leftBorder.transform.localScale = new Vector3(gameWorldDimensions.y / topBorder.GetComponent<BoxCollider2D>().size.y, 1, 1);
+
+        GameObject rightBorder = Instantiate(borderPrefab);
+        rightBorder.name = "World Border (Right)";
+        rightBorder.transform.position = new Vector2(gameWorldDimensions.x / 2 + rightBorder.GetComponent<BoxCollider2D>().size.x / 2, 0);
+        rightBorder.transform.rotation = Quaternion.Euler(0, 0, 270);
+        rightBorder.transform.localScale = new Vector3(gameWorldDimensions.y / topBorder.GetComponent<BoxCollider2D>().size.y, 1, 1);
     }
 
     public void SpawnPlayers()

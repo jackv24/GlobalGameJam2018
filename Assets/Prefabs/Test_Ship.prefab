@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114283943316888232}
   - component: {fileID: 114612709640742070}
   - component: {fileID: 60549740462654594}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Test_Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4871706410359378}
-  m_Layer: 0
+  - component: {fileID: 114080359632309242}
+  m_Layer: 12
   m_Name: Shot Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,6 +248,18 @@ PolygonCollider2D:
       - {x: -0.5466667, y: -0.47333336}
       - {x: -0.6, y: -0.46}
       - {x: -0.6666667, y: -0.46}
+--- !u!114 &114080359632309242
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699728207817168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 6a9d3116-df6f-4d1c-8abd-b8e9c5b52cc7
 --- !u!114 &114115116057382520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,7 +274,7 @@ MonoBehaviour:
   maxHealth: 100
 --- !u!114 &114283943316888232
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219551978645792}
@@ -275,6 +288,7 @@ MonoBehaviour:
   _referenceCollection:
     _collection:
     - {fileID: 1219551978645792}
+    - {fileID: 1699728207817168}
   _assetGuid: e05e6280631a79047810b9856fa23f39
 --- !u!114 &114396344142335340
 MonoBehaviour:
@@ -290,7 +304,7 @@ MonoBehaviour:
   shipGunData: {fileID: 11400000, guid: 478d32cc47bf38b4486cbc4bdf040f42, type: 2}
 --- !u!114 &114612709640742070
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219551978645792}
