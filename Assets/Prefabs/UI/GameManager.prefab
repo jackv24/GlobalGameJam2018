@@ -114,7 +114,7 @@ MonoBehaviour:
   resourcePrefab: {fileID: 1806980955116278, guid: 00007a68d35bd48458435259ecbb442d,
     type: 2}
   gameDuration: 300
-  resourceCount: 1000
-  gameWorldDimensions: {x: 100, y: 80}
+  resourceCount: 5000
+  gameWorldDimensions: {x: 500, y: 300}
   borderPrefab: {fileID: 1921034795112896, guid: 8a3b6d9fd8cb01a40ae8c8952e7af8a5,
     type: 2}

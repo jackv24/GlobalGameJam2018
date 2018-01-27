@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private float gameDuration = 300;
 
     [SerializeField]
-    [Range(1000, 50000)]
+    [Range(1000, 10000)]
     [Tooltip("The number of resources to be in play at one time")]
     private uint resourceCount = 1000;
 
@@ -162,8 +162,8 @@ public class GameManager : MonoBehaviour
             Vector2 clusterPosition = new Vector2(Random.Range(-topRightCorner.x, topRightCorner.x), 
                                                     Random.Range(-topRightCorner.y, topRightCorner.y));
 
-            // Spawn up to 50 resources in this cluster
-            int resourcesInCluster = Random.Range(20, 50);
+            // Spawn up to 20 resources in this cluster
+            int resourcesInCluster = Random.Range(5, 20);
             if (spawnCount + resourcesInCluster > resourceCount)
                 resourcesInCluster = (int)resourceCount - (int)spawnCount;
 
@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
 
             // Attempt to maintain stable framerate through loading screen
             stopwatch.Stop();
-            if (stopwatch.Elapsed.Seconds > 0.033f)
+            if (stopwatch.Elapsed.Seconds > 0.0033f)
             {
                 Debug.Log("Yielding in GenerateResources()");
                 yield return null;
