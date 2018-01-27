@@ -5,11 +5,19 @@ using InControl;
 
 public class GameManager : MonoBehaviour
 {
+    public delegate void TimerDelegate(float remainingTime);
+    public event TimerDelegate OnTimerChanged;
+
     public static GameManager Instance;
 
     public GameObject cameraPrefab;
     public GameObject playerPrefab;
     public GameObject hudPrefab;
+    public GameObject timerPrefab;
+
+    [SerializeField]
+    [Tooltip("Game's duration in seconds")]
+    private float gameDuration = 300;
 
     [SerializeField]
     private Vector2 gameWorldDimensions;
@@ -47,32 +55,70 @@ public class GameManager : MonoBehaviour
 
     private void SetupWorldBorders()
     {
-        GameObject topBorder = Instantiate(borderPrefab);
+        GameObject borderParent = new GameObject("Map Borders");
+
+        GameObject topBorder = Instantiate(borderPrefab, borderParent.transform);
         topBorder.name = "World Border (Top)";
         topBorder.transform.position = new Vector2(0, gameWorldDimensions.y / 2 + topBorder.GetComponent<BoxCollider2D>().size.y / 2);
         topBorder.transform.rotation = Quaternion.Euler(0, 0, 0);
         topBorder.transform.localScale = new Vector3(gameWorldDimensions.x / topBorder.GetComponent<BoxCollider2D>().size.x, 1, 1);
 
-        GameObject bottomBorder = Instantiate(borderPrefab);
+        GameObject bottomBorder = Instantiate(borderPrefab, borderParent.transform);
         bottomBorder.name = "World Border (Bottom)";
         bottomBorder.transform.position = new Vector2(0, -gameWorldDimensions.y / 2 - bottomBorder.GetComponent<BoxCollider2D>().size.y / 2);
         bottomBorder.transform.rotation = Quaternion.Euler(0, 0, 180);
         bottomBorder.transform.localScale = new Vector3(gameWorldDimensions.x / topBorder.GetComponent<BoxCollider2D>().size.x, 1, 1);
 
-        GameObject leftBorder = Instantiate(borderPrefab);
+        GameObject leftBorder = Instantiate(borderPrefab, borderParent.transform);
         leftBorder.name = "World Border (Left)";
         leftBorder.transform.position = new Vector2(-gameWorldDimensions.x / 2 - leftBorder.GetComponent<BoxCollider2D>().size.x / 2, 0);
         leftBorder.transform.rotation = Quaternion.Euler(0, 0, 90);
         leftBorder.transform.localScale = new Vector3(gameWorldDimensions.y / topBorder.GetComponent<BoxCollider2D>().size.y, 1, 1);
 
-        GameObject rightBorder = Instantiate(borderPrefab);
+        GameObject rightBorder = Instantiate(borderPrefab, borderParent.transform);
         rightBorder.name = "World Border (Right)";
         rightBorder.transform.position = new Vector2(gameWorldDimensions.x / 2 + rightBorder.GetComponent<BoxCollider2D>().size.x / 2, 0);
         rightBorder.transform.rotation = Quaternion.Euler(0, 0, 270);
         rightBorder.transform.localScale = new Vector3(gameWorldDimensions.y / topBorder.GetComponent<BoxCollider2D>().size.y, 1, 1);
     }
 
-    public void SpawnPlayers()
+    public void StartGame()
+    {
+        SpawnPlayers();
+
+        StartTimer();
+    }
+
+    private void EndGame()
+    {
+        // TODO: Go to win screen or something
+    }
+
+    private IEnumerator GameTimer(float duration)
+    {
+        float elapsed = 0;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+
+            if (OnTimerChanged != null)
+                OnTimerChanged(Mathf.Max(duration - elapsed, 0));
+
+            yield return null;
+        }
+
+        EndGame();
+    }
+
+    private void StartTimer()
+    {
+        Timer timerObject = Instantiate(timerPrefab).GetComponent<Timer>();
+        timerObject.StartTimer(this);
+
+        StartCoroutine(GameTimer(gameDuration));
+    }
+
+    private void SpawnPlayers()
     {
         for (int i = 0; i < playerControls.Count; i++)
         {
