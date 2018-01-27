@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
 
                 // Magic values for resource worth, because why not. Separate this later if needed
                 resourceScript.Value = Random.Range(2, 15);
-                resourceObject.transform.localScale = Vector3.one * resourceScript.Value / 10;
+                resourceObject.transform.localScale = Vector3.one * resourceScript.Value / 12;
 
                 // Spawn tracker for large clusters
                 if (largeCluster && i == 0)
@@ -252,6 +252,8 @@ public class GameManager : MonoBehaviour
 
             if (playerInput)
             {
+                playerInput.camera = cameraObj.GetComponent<Camera>();
+
                 CameraFollow follow = cameraObj.GetComponent<CameraFollow>();
                 if (follow)
                     follow.target = playerInput.followTarget;

@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     private bool inShip;
 
     public SetRenderLayers cameraRender;
+    public Camera camera;
 
     [HideInInspector]
     public Transform followTarget;
@@ -108,12 +109,14 @@ public class PlayerInput : MonoBehaviour
             controlling = shipObj.GetComponentInChildren<Controllable>();
 
             cameraRender.SetRenderShip();
+            camera.orthographicSize = 12;
         }
         else // Do not idsable ships while in platformer
         {
             controlling = platformerObj.GetComponentInChildren<Controllable>();
 
             cameraRender.SetRenderPlatformer();
+            camera.orthographicSize = 8;
 
             ShipInterior shipInterior = GetComponentInChildren<ShipInterior>();
             if(shipInterior)
