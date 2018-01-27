@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public GameObject platformerPrefab;
-    public GameObject shipPrefab;
-
     private GameObject platformerObj;
     private GameObject shipObj;
 
@@ -22,26 +19,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Awake()
     {
-        {
-            GameObject obj = new GameObject("Follow Target");
-            followTarget = obj.transform;
-            followTarget.transform.SetParent(transform);
-        }
-
-        if(platformerPrefab)
-        {
-            platformerObj = Instantiate(platformerPrefab, transform);
-            platformerObj.name = platformerPrefab.name;
-
-            controlling = platformerObj.GetComponent<Controllable>();
-        }
-
-        if(shipPrefab)
-        {
-            shipObj = Instantiate(shipPrefab, transform);
-            shipObj.name = shipPrefab.name;
-        }
-
+        GameObject obj = new GameObject("Follow Target");
+        followTarget = obj.transform;
+        followTarget.transform.SetParent(transform);
     }
 
     private void Start()
@@ -73,6 +53,23 @@ public class PlayerInput : MonoBehaviour
             controlling.Shoot(shootButtonState);
 
             followTarget.transform.position = controlling.transform.position;
+        }
+    }
+
+    public void SpawnLoadout(PlayerLoadout loadout)
+    {
+        if (loadout.platformerPrefab)
+        {
+            platformerObj = Instantiate(loadout.platformerPrefab, transform);
+            platformerObj.name = loadout.platformerPrefab.name;
+
+            controlling = platformerObj.GetComponent<Controllable>();
+        }
+
+        if (loadout.shipPrefab)
+        {
+            shipObj = Instantiate(loadout.shipPrefab, transform);
+            shipObj.name = loadout.shipPrefab.name;
         }
     }
 
@@ -122,6 +119,10 @@ public class PlayerInput : MonoBehaviour
             if(shipInterior)
             {
                 platformerObj.transform.position = shipInterior.spawnPoint.position;
+
+                Rigidbody2D body = platformerObj.GetComponentInChildren<Rigidbody2D>();
+                if (body && body.gameObject != platformerObj)
+                    body.transform.localPosition = Vector3.zero;
             }
         }
 

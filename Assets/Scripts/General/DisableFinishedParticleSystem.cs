@@ -14,7 +14,7 @@ public class DisableFinishedParticleSystem : MonoBehaviour
 
     private void Update()
     {
-        if (!system.isEmitting)
+        if (!system.isEmitting && system.particleCount <= 0)
             gameObject.SetActive(false);
     }
 }

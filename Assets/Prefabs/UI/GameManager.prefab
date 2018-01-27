@@ -115,3 +115,16 @@ MonoBehaviour:
   gameWorldDimensions: {x: 100, y: 80}
   borderPrefab: {fileID: 1921034795112896, guid: 8a3b6d9fd8cb01a40ae8c8952e7af8a5,
     type: 2}
+  playerLoadouts:
+  - platformerPrefab: {fileID: 1998820672914462, guid: 89a33eb927a9ae847ab338fdeb73cb76,
+      type: 2}
+    shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39,
+      type: 2}
+  - platformerPrefab: {fileID: 1220452413515850, guid: 37e975f5365ff8747a74625aa9902b93,
+      type: 2}
+    shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39,
+      type: 2}
+  - platformerPrefab: {fileID: 1220452413515850, guid: 241f5407f936d6a4683c3c5ad30fdf5d,
+      type: 2}
+    shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39,
+      type: 2}

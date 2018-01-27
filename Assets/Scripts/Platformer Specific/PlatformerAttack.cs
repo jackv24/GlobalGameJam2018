@@ -10,6 +10,8 @@ public class PlatformerAttack : MonoBehaviour
     public float fireRate = 2.0f;
     private float nextFireTime;
 
+    public GameObject muzzleFlashPrefab;
+
     public AudioEvent fireSound;
 
     private Collider2D col;
@@ -24,6 +26,13 @@ public class PlatformerAttack : MonoBehaviour
         if(projectilePrefab && Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + (1 / fireRate);
+
+            GameObject muzzleFlash = ObjectPooler.GetPooledObject(muzzleFlashPrefab);
+            muzzleFlash.transform.SetParent(null);
+            muzzle.transform.localScale = new Vector3(Mathf.Sign(-direction), 1, 1);
+            muzzleFlash.transform.SetParent(muzzle);
+            muzzleFlash.transform.localPosition = Vector2.zero;
+
 
             GameObject projectileObj = ObjectPooler.GetPooledObject(projectilePrefab);
 
