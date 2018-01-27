@@ -248,6 +248,11 @@ MonoBehaviour:
     type: 2}
   muzzle: {fileID: 4305118659409184}
   fireRate: 2
+  fireSound:
+    clip: {fileID: 8300000, guid: 21d937d5cf481764f85492f17615dc48, type: 3}
+    pitchMin: 0.85
+    pitchMax: 1.15
+    volume: 0.5
 --- !u!114 &114028619537570006
 MonoBehaviour:
   m_ObjectHideFlags: 11

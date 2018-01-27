@@ -10,6 +10,8 @@ public class PlatformerAttack : MonoBehaviour
     public float fireRate = 2.0f;
     private float nextFireTime;
 
+    public AudioEvent fireSound;
+
     private Collider2D col;
 
     private void Awake()
@@ -34,6 +36,8 @@ public class PlatformerAttack : MonoBehaviour
             PlatformerProjectile proj = projectileObj.GetComponent<PlatformerProjectile>();
             if (proj)
                 proj.Fire(direction);
+
+            fireSound.Play(transform.position);
 
             Collider2D projectileCollider = projectileObj.GetComponent<Collider2D>();
             if (projectileCollider)
