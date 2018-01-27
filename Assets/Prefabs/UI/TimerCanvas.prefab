@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114050738810237980}
   - component: {fileID: 114277763773881930}
   - component: {fileID: 114571687789539774}
-  - component: {fileID: 114698560441295874}
+  - component: {fileID: 114869489992297270}
   m_Layer: 5
   m_Name: TimerCanvas
   m_TagString: Untagged
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 224132991749393138}
   - component: {fileID: 222274896546389350}
   - component: {fileID: 114157004801076276}
+  - component: {fileID: 114226840779715508}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -59,6 +60,7 @@ GameObject:
   - component: {fileID: 224176824990555052}
   - component: {fileID: 222890666859184814}
   - component: {fileID: 114158465220216300}
+  - component: {fileID: 114020866305279066}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -66,6 +68,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114020866305279066
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643502060933428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 8c0df902-1945-45ca-bba9-bba2e6a41453
 --- !u!114 &114050738810237980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,9 +156,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114226840779715508
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238801201295056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _guid: 0bfe2d6f-eb82-4176-9a29-6560c417ead5
 --- !u!114 &114277763773881930
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217492416455182}
@@ -158,12 +184,9 @@ MonoBehaviour:
   _referenceCollection:
     _collection:
     - {fileID: 1217492416455182}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-  _assetGuid: 887040184a831844eb298512a673923d
+    - {fileID: 1643502060933428}
+    - {fileID: 1238801201295056}
+  _assetGuid: 06c83513734319c45950078b809b19a9
 --- !u!114 &114469825528782880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,7 +210,7 @@ MonoBehaviour:
   m_DynamicPixelsPerUnit: 1
 --- !u!114 &114571687789539774
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217492416455182}
@@ -196,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 112998890, guid: 325c5b2a7434372429c2ca9d61dba58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _guid: b1d3960d-d95b-4a80-866e-66d86abacab8
---- !u!114 &114698560441295874
+  _guid: df14420c-3807-4e7f-9a6b-3f978ee3a5bd
+--- !u!114 &114869489992297270
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -205,16 +228,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1217492416455182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb947eb9238fa0048960e3f1338abcec, type: 3}
+  m_Script: {fileID: 11500000, guid: 2416706f644bea4419563281184e3f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTime: 10
-  startPanels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  startPrompt: {fileID: 0}
 --- !u!222 &222274896546389350
 CanvasRenderer:
   m_ObjectHideFlags: 1
