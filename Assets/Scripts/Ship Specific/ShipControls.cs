@@ -140,8 +140,8 @@ public class ShipControls : Controllable
     public override void Look(Vector2 inputVector)
     {
         lookAngle = Mathf.LerpAngle(lookAngle, Vector2.SignedAngle(Vector2.up, inputVector), inputVector.sqrMagnitude * 0.1f);
-        
-        rigidbody2D.MoveRotation(lookAngle);
+
+        rigidbody2D.rotation = lookAngle;
     }
 
     /// <summary>

@@ -2,15 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParallaxQuadUV : MonoBehaviour {
+public class ParallaxQuadUV : ParallaxObject
+{
+    private Material quadMaterial;
+    private float initialMaterialHeight;
+    private float initialAspectRatio;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected override void Awake()
+    {
+        base.Awake();
+
+        quadMaterial = GetComponent<Renderer>().material;
+        initialMaterialHeight = quadMaterial.GetTextureScale("_MainTex").y;
+        initialAspectRatio = gameObject.transform.localScale.x / gameObject.transform.localScale.y;
+    }
+
+    public override void PositionRelativeTo(Camera relativeTo)
+    {
+        // Offset UVs
+        float amount = 1 / distanceFromCamera;
+        quadMaterial.SetTextureOffset("_MainTex", (Vector2)relativeTo.transform.position * amount + offset);
+
+        // Set quad position to render in front of camera
+        transform.position = new Vector3(relativeTo.transform.position.x, 
+                                            relativeTo.transform.position.y, 
+                                            transform.position.z);
+
+        // Scale quad to fill camera's viewport
+        float quadHeight = relativeTo.orthographicSize * 2;
+        transform.localScale = new Vector3(quadHeight * relativeTo.pixelWidth / relativeTo.pixelHeight, quadHeight, 1);
+
+        // Scale material down
+        float differenceInAspectRatio = (gameObject.transform.localScale.x / gameObject.transform.localScale.y) / initialAspectRatio;
+        quadMaterial.SetTextureScale("_MainTex", new Vector2(differenceInAspectRatio, initialMaterialHeight));
+    }
 }

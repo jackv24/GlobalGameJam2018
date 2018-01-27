@@ -5,14 +5,18 @@ using UnityEngine;
 public class ParallaxObject : MonoBehaviour
 {
     [SerializeField]
-    private float distanceFromCamera;
+    protected float distanceFromCamera;
 
-    public float DistanceFromCamera { get { return distanceFromCamera; } }
+    protected Vector2 offset;
 
-    public Vector2 Offset { get; private set; }
-
-    private void Awake()
+    protected virtual void Awake()
     {
-        Offset = transform.position;
+        offset = transform.position;
+    }
+
+    public virtual void PositionRelativeTo(Camera relativeTo)
+    {
+        float amount = 1 / distanceFromCamera;
+        transform.position = (Vector2)relativeTo.transform.position * -amount + offset;
     }
 }
