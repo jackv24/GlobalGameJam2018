@@ -57,7 +57,8 @@ public class PlatformerStats : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        ShipInterior ship = transform.parent.GetComponentInChildren<ShipInterior>();
+        ShipInterior ship = transform.root.GetComponentInChildren<ShipInterior>();
+
         if (ship)
             Destroy(ship.gameObject);
 
@@ -68,6 +69,8 @@ public class PlatformerStats : MonoBehaviour
         }
 
         currentHealth = maxHealth;
+
+        SendHealthEvent();
 
         dieRoutine = null;
     }

@@ -5,18 +5,23 @@ using UnityEngine;
 public class ShipInteriorSpawner : MonoBehaviour
 {
     public GameObject shipInteriorPrefab;
-    
+
+    public float spawnBoardDelay = 1.0f;
+    private float nextBoardTime;
+
     [HideInInspector]
     public bool letSpawn = true;
 
     private void OnEnable()
     {
         letSpawn = true;
+
+        nextBoardTime = Time.time + spawnBoardDelay;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (letSpawn)
+        if (letSpawn && Time.time >= nextBoardTime)
         {
             ShipInteriorSpawner other = collision.collider.GetComponent<ShipInteriorSpawner>();
             if (other && other.letSpawn)
