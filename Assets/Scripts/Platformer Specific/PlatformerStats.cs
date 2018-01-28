@@ -7,6 +7,9 @@ public class PlatformerStats : MonoBehaviour
     public delegate void HealthDelegate(int currentHealth, int maxHealth);
     public event HealthDelegate OnUpdateHealth;
 
+    public delegate void DeathDelegate(PlatformerStats sender);
+    public event DeathDelegate OnDeath;
+
     public int currentHealth = 10;
     public int maxHealth = 10;
 
@@ -71,6 +74,9 @@ public class PlatformerStats : MonoBehaviour
         currentHealth = maxHealth;
 
         SendHealthEvent();
+
+        if (OnDeath != null)
+            OnDeath(this);
 
         dieRoutine = null;
     }
