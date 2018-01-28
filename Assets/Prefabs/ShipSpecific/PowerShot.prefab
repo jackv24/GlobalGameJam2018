@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114675999604374894}
   - component: {fileID: 58864715113812316}
   m_Layer: 14
-  m_Name: ShipShot2
+  m_Name: PowerShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 3
-  velocity: 30
+  velocity: 35
 --- !u!114 &114601631197101578
 MonoBehaviour:
   m_ObjectHideFlags: 11

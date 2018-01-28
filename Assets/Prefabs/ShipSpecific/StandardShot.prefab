@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114461843461206248}
   - component: {fileID: 58925069284547066}
   m_Layer: 14
-  m_Name: ShipShot
+  m_Name: StandardShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,4 +161,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 3
-  velocity: 10
+  velocity: 25

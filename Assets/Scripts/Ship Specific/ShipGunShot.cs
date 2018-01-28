@@ -20,6 +20,7 @@ public class ShipGunShot : MonoBehaviour
     
     public Vector2 Position { set { transform.position = value; } }
     public Vector2 Direction { get; set; }
+    public Vector2 ExtraVelocity { get; set; }
     public int Damage { get; set; }
 
     private void Awake()
@@ -37,7 +38,7 @@ public class ShipGunShot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody2D.velocity = Direction.normalized * velocity;
+        rigidbody2D.velocity = Direction.normalized * velocity + ExtraVelocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
