@@ -82,7 +82,7 @@ CircleCollider2D:
   m_Radius: 0.3
 --- !u!114 &114113309471955932
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458115159824940}
@@ -99,7 +99,7 @@ MonoBehaviour:
   _assetGuid: ad6316618e278fd43b4d7c7f8de85e15
 --- !u!114 &114461843461206248
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458115159824940}
@@ -151,8 +151,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1248760549
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e6879ffd296f25f469f86ae941512a58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

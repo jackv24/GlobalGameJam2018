@@ -12,7 +12,7 @@ public class ResourcePinger : MonoBehaviour
     private void Start()
     {
         ParticleSystem system = Instantiate<ParticleSystem>(particlePrefab, this.transform);
-        system.transform.localPosition = new Vector3(0, 0, 1);
+        system.transform.localPosition = new Vector3(0, 0, 0.01f);
     }
 
     private void OnDisable()
