@@ -12,6 +12,8 @@ public class ShipGunData : ScriptableObject
     [Tooltip("Fire Rate in Rounds Per Minute")]
     public float FireRate;
 
+    public float FireRateRoundsPerSecond { get { return FireRate / 60; } }
+
     public void Validate()
     {
         if (ShotPrefab == null)
