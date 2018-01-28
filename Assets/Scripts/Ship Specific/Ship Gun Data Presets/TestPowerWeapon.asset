@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: TestPowerWeapon
   m_EditorClassIdentifier: 
   ShotPrefab: {fileID: 1458115159824940, guid: 873bee5f9f578d34e8939be1c165bfdd, type: 2}
-  Damage: 0
+  Damage: 100
   FireRate: 0

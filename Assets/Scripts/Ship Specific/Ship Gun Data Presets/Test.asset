@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   ShotPrefab: {fileID: 1458115159824940, guid: ad6316618e278fd43b4d7c7f8de85e15, type: 2}
-  Damage: 40
+  Damage: 3
   FireRate: 180
