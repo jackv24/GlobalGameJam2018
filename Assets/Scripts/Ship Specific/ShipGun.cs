@@ -44,6 +44,14 @@ public class ShipGun : MonoBehaviour
     /// </summary>
     public ShipGunShot Shoot(Vector2 origin, Vector2 direction)
     {
+        return Shoot(origin, direction, Vector2.zero);
+    }
+
+    /// <summary>
+    /// Shoots the gun & returns the shot instance
+    /// </summary>
+    public ShipGunShot Shoot(Vector2 origin, Vector2 direction, Vector2 extraVelocity)
+    {
         if (Time.time < lastShotTime + 1 / ShipGunData.FireRateRoundsPerSecond)
             return null;
 
@@ -53,6 +61,7 @@ public class ShipGun : MonoBehaviour
 
         shotBehaviour.Position = origin;
         shotBehaviour.Direction = direction;
+        shotBehaviour.ExtraVelocity = extraVelocity;
         shotBehaviour.Damage = shipGunData.Damage;
 
         lastShotTime = Time.time;

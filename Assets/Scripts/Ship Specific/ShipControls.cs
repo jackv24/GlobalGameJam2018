@@ -183,12 +183,12 @@ public class ShipControls : Controllable
             if (powerWeapon != null)
             {
                 // Shoot power weapon & drop it
-                shot = powerWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
+                shot = powerWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up, rigidbody2D.velocity);
                 powerWeapon = null;
             }
             else
             {
-                shot = defaultWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
+                shot = defaultWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up, rigidbody2D.velocity);
             }
             
             if (shot != null)
