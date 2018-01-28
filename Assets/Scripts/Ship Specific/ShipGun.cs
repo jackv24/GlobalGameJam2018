@@ -25,6 +25,8 @@ public class ShipGun : MonoBehaviour
                 throw new System.ArgumentNullException();
         }
     }
+
+    private float lastShotTime;
     #endregion
 
     private void Start()
@@ -33,6 +35,8 @@ public class ShipGun : MonoBehaviour
             throw new System.MissingFieldException("ShipGun requires shipGunData");
 
         shipGunData.Validate();
+
+        lastShotTime = -ShipGunData.FireRate;
     }
 
     /// <summary>
@@ -40,6 +44,9 @@ public class ShipGun : MonoBehaviour
     /// </summary>
     public ShipGunShot Shoot(Vector2 origin, Vector2 direction)
     {
+        if (Time.time < lastShotTime + 1 / ShipGunData.FireRateRoundsPerSecond)
+            return null;
+
         GameObject shot = ObjectPooler.GetPooledObject(shipGunData.ShotPrefab);
 
         var shotBehaviour = shot.GetComponent<ShipGunShot>();
@@ -47,6 +54,8 @@ public class ShipGun : MonoBehaviour
         shotBehaviour.Position = origin;
         shotBehaviour.Direction = direction;
         shotBehaviour.Damage = shipGunData.Damage;
+
+        lastShotTime = Time.time;
 
         return shotBehaviour;
     }

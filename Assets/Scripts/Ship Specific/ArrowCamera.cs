@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ArrowCamera : MonoBehaviour
 {
+    public Color resourceArrowColor = Color.yellow;
+    public Color enemyArrowColor = Color.red;
+
     private List<ResourceArrow> trackedResourceArrows;
     private new Camera camera;
 
@@ -20,7 +23,7 @@ public class ArrowCamera : MonoBehaviour
         trackedResourceArrows = new List<ResourceArrow>();
     }
 
-    public void StartPing(Vector3 position, float radius, GameObject resourceArrowPrefab)
+    public void StartResourcePing(Vector3 position, float radius, GameObject resourceArrowPrefab)
     {
         StopAllCoroutines();
         
@@ -41,6 +44,7 @@ public class ArrowCamera : MonoBehaviour
             GameObject newArrowObject = ObjectPooler.GetPooledObject(resourceArrowPrefab);
             ResourceArrow arrow = newArrowObject.GetComponentInChildren<ResourceArrow>();
             arrow.Target = pinger;
+            arrow.SpriteRenderer.color = resourceArrowColor;
 
             TimedDisable disabler = newArrowObject.GetComponent<TimedDisable>();
             disabler.duration = 5.0f;
@@ -48,7 +52,7 @@ public class ArrowCamera : MonoBehaviour
             trackedResourceArrows.Add(arrow);
         }
 
-        StartCoroutine(IndicatorTimer());
+        StartCoroutine(ResourceIndicatorTimer());
     }
 
     private void OnPreRender()
@@ -82,7 +86,7 @@ public class ArrowCamera : MonoBehaviour
         }
     }
 
-    private IEnumerator IndicatorTimer()
+    private IEnumerator ResourceIndicatorTimer()
     {
         effectAlpha = 1.0f;
 

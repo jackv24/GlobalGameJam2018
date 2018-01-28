@@ -153,7 +153,7 @@ public class ShipControls : Controllable
         if (buttonState == ButtonState.WasPressed
             && Time.time - lastPingTime >= transmissionPingCooldown)
         {
-            arrowCamera.StartPing(transform.position, transmissionPingResourceRadius, resourceArrowPrefab);
+            arrowCamera.StartResourcePing(transform.position, transmissionPingResourceRadius, resourceArrowPrefab);
             
             // Raise ping event
             if (OnTransmissionPing != null)
@@ -165,7 +165,7 @@ public class ShipControls : Controllable
 
     public override void Shoot(ButtonState buttonState)
     {
-        if (buttonState == ButtonState.WasPressed)
+        if (buttonState == ButtonState.IsPressed)
         {
             ShipGunShot shot;
 
@@ -180,7 +180,8 @@ public class ShipControls : Controllable
                 shot = defaultWeapon.Shoot(shotOrigin == null ? transform.position : shotOrigin.position, transform.up);
             }
             
-            Physics2D.IgnoreCollision(shot.Collider, collider);
+            if (shot != null)
+                Physics2D.IgnoreCollision(shot.Collider, collider);
         }
     }
     #endregion

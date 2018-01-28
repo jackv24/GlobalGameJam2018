@@ -66,7 +66,7 @@ MonoBehaviour:
     type: 2}
 --- !u!114 &114609027450781682
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076481854599908}
@@ -83,7 +83,7 @@ MonoBehaviour:
   _assetGuid: 96f0853741fc04649810d38ff45d9d71
 --- !u!114 &114621782088871302
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076481854599908}
@@ -114,7 +114,9 @@ MonoBehaviour:
   resourcePrefab: {fileID: 1806980955116278, guid: 00007a68d35bd48458435259ecbb442d,
     type: 2}
   gameDuration: 300
-  resourceCount: 5000
+  resourceCount: 3000
+  largeResourceCacheParticles: {fileID: 198043923122701498, guid: 6ae8233e8a9768e4dbd476150b0aa340,
+    type: 2}
   gameWorldDimensions: {x: 500, y: 300}
   borderPrefab: {fileID: 1921034795112896, guid: 8a3b6d9fd8cb01a40ae8c8952e7af8a5,
     type: 2}

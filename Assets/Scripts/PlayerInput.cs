@@ -147,8 +147,28 @@ public class PlayerInput : MonoBehaviour
             shipHealth.Die(false);
         }
 
-        //TODO: REPLACE WITH ACTUAL GOOD PLACEMENT CODE
-        shipObj.transform.position = Vector2.zero;
+        var spawnPoints = GameManager.Instance.SpawnPoints;
+        Vector3 bestSpawn = Vector3.zero;
+        float largestDistanceToOtherShip = 0;
+
+        foreach (var point in spawnPoints)
+        {
+            foreach (var ship in GameManager.Instance.PlayerShips)
+            {
+                // Don't check against this ship
+                if (ship.transform.root == this.transform.root)
+                    continue;
+
+                float shipToPoint = Vector3.Distance(point, ship.transform.position);
+                if (shipToPoint > largestDistanceToOtherShip)
+                {
+                    largestDistanceToOtherShip = shipToPoint;
+                    bestSpawn = point;
+                }
+            }
+        }
+
+        shipObj.transform.position = bestSpawn;
 
         shipObj.SetActive(false);
         shipObj.SetActive(true);

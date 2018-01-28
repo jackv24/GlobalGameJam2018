@@ -328,7 +328,9 @@ MonoBehaviour:
   maximumVelocity: 15
   impulseMagnitude: 25.9
   transmissionPingCooldown: 5
-  transmissionPingResourceRadius: 30
+  transmissionPingResourceRadius: 100
+  resourceArrowPrefab: {fileID: 1424031482477744, guid: d5bfbec54ad2caa45832be50bed2e152,
+    type: 2}
   defaultWeapon: {fileID: 0}
   shotOrigin: {fileID: 4871706410359378}
 --- !u!114 &114971501191213456

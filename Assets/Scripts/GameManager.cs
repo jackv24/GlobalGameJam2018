@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     private List<ResourcePinger> resourcePingObjects;
     public List<ResourcePinger> ResourcePingObjects { get { return resourcePingObjects; } }
 
+    private List<Vector3> spawnPoints;
+    public List<Vector3> SpawnPoints { get { return spawnPoints; } }
+
     [SerializeField]
     [Tooltip("Game's duration in seconds")]
     private float gameDuration = 300;
@@ -30,6 +33,9 @@ public class GameManager : MonoBehaviour
     private uint resourceCount = 1000;
 
     [SerializeField]
+    private ParticleSystem largeResourceCacheParticles;
+
+    [SerializeField]
     private Vector2 gameWorldDimensions;
 
     [SerializeField]
@@ -38,6 +44,7 @@ public class GameManager : MonoBehaviour
     private List<PlayerActions> playerControls = new List<PlayerActions>();
 
     private List<ShipControls> playerShips = new List<ShipControls>();
+    public List<ShipControls> PlayerShips { get { return playerShips; } }
 
     public PlayerLoadout[] playerLoadouts;
 
@@ -112,8 +119,27 @@ public class GameManager : MonoBehaviour
 
         yield return GenerateResources();
 
+        CalculateSpawnPoints();
+
         SpawnPlayers();
         StartTimer();
+    }
+
+    private void CalculateSpawnPoints()
+    {
+        spawnPoints = new List<Vector3>();
+
+        // Get top right corner of the play region
+        Vector2 topRightCorner = (gameWorldDimensions / 2);
+
+        // Inset corner by 20% to get spawn point
+        Vector2 topRightSpawnPoint = topRightCorner * 0.8f;
+
+        // Add spawn point in each corner
+        spawnPoints.Add(topRightSpawnPoint);
+        spawnPoints.Add(new Vector2(topRightSpawnPoint.x, -topRightSpawnPoint.y));
+        spawnPoints.Add(new Vector2(-topRightSpawnPoint.x, topRightSpawnPoint.y));
+        spawnPoints.Add(new Vector2(-topRightSpawnPoint.x, -topRightSpawnPoint.y));
     }
 
     private void EndGame()
@@ -192,8 +218,12 @@ public class GameManager : MonoBehaviour
                 // Spawn tracker for large clusters
                 if (largeCluster && i == 0)
                 {
-                    Debug.Log(string.Concat("Spawning a ResourcePinger at ", resourceObject.transform.position));
+                    resourceScript.Value = 20;
+                    resourceObject.transform.localScale = Vector3.one * resourceScript.Value / 12;
+
                     var pinger = resourceObject.AddComponent<ResourcePinger>();
+                    pinger.particlePrefab = largeResourceCacheParticles;
+
                     pinger.OnDespawn += RemovePingerTracker;
                     resourcePingObjects.Add(pinger);
                 }
@@ -244,7 +274,7 @@ public class GameManager : MonoBehaviour
                 playerShips.Add(ship);
                 ship.OnTransmissionPing += OnShipPing;
 
-                ship.gameObject.transform.position = new Vector3(i * 5, 0, 0);
+                ship.gameObject.transform.position = spawnPoints[i];
             }
 
             cameraObj.name = "Camera " + num;
