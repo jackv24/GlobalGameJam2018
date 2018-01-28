@@ -38,7 +38,7 @@ public class ShipInteriorSpawner : MonoBehaviour
                 other.letSpawn = false;
                 letSpawn = false;
 
-                GameObject obj = Instantiate(shipInteriorPrefab, transform.parent);
+                GameObject obj = Instantiate(other.shipInteriorPrefab, transform.parent);
 
                 GameManager manager = GameManager.Instance;
 

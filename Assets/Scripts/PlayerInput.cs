@@ -121,19 +121,14 @@ public class PlayerInput : MonoBehaviour
             cameraRender.SetRenderPlatformer();
             camera.orthographicSize = 8;
 
-            ShipInterior shipInterior = GetComponentInChildren<ShipInterior>(true);
-            if(shipInterior)
+            Rigidbody2D body = platformerObj.GetComponentInChildren<Rigidbody2D>(true);
+            if (body && body.gameObject != platformerObj)
             {
-                Rigidbody2D body = platformerObj.GetComponentInChildren<Rigidbody2D>(true);
-                if (body && body.gameObject != platformerObj)
-                {
-                    body.transform.localPosition = Vector3.zero;
-                    body.gameObject.SetActive(true);
-                }
-
-                if(body)
-                    body.velocity = Vector2.zero;
+                body.gameObject.SetActive(true);
             }
+
+            if (body)
+                body.velocity = Vector2.zero;
         }
 
         if (controlling)
