@@ -41,6 +41,11 @@ public class ShipGunShot : MonoBehaviour
         rigidbody2D.velocity = Direction.normalized * velocity + ExtraVelocity;
     }
 
+    public void SetRotation(Vector3 direction)
+    {
+        transform.up = direction;
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         IShipDamageable damageable = collider.gameObject.GetComponent<IShipDamageable>();
