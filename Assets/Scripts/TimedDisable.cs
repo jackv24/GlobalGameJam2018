@@ -13,7 +13,13 @@ public class TimedDisable : MonoBehaviour
 
     private IEnumerator DisableTimer()
     {
-        yield return new WaitForSeconds(duration);
+        float elapsed = 0;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
         this.gameObject.SetActive(false);
     }
 

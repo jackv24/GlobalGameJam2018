@@ -39,7 +39,15 @@ public class ShipInteriorSpawner : MonoBehaviour
                 letSpawn = false;
 
                 GameObject obj = Instantiate(shipInteriorPrefab, transform.parent);
-                obj.transform.position = transform.position;
+
+                GameManager manager = GameManager.Instance;
+
+                // Find which number ship this is in the Game Manager & get the corresponding spawnPoint
+                int shipNumber = manager.PlayerShips.IndexOf(shipControls);
+                Vector3 spawnPoint = manager.SpawnPoints[shipNumber];
+
+                // Spawn the interior past the spawn point
+                obj.transform.position = spawnPoint * 2;
 
                 Vector3 scale = obj.transform.localScale;
                 scale.x *= flip;
