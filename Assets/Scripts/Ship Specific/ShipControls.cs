@@ -22,7 +22,6 @@ public class ShipControls : Controllable
 
     private ShipGun powerWeapon;
     private float lastPingTime;
-    private Dictionary<ShipControls, Vector2> enemyPings;
 
     private float lookAngle;
 
@@ -82,7 +81,6 @@ public class ShipControls : Controllable
             throw new System.MissingFieldException("ShipControls script requires a default weapon");
 
         this.collider = GetComponent<Collider2D>();
-        this.enemyPings = new Dictionary<ShipControls, Vector2>();
     }
 
     private void Start()
@@ -212,10 +210,7 @@ public class ShipControls : Controllable
     /// </summary>
     public void AlertEnemyPresence(ShipControls enemyShip)
     {
-        if (enemyPings.ContainsKey(enemyShip))
-            enemyPings[enemyShip] = enemyShip.transform.position;
-        else
-            enemyPings.Add(enemyShip, enemyShip.transform.position);
+        arrowCamera.SetEnemyPing(enemyShip, resourceArrowPrefab);
     }
 
     private void FixedUpdate()
