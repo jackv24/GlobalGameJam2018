@@ -22,7 +22,6 @@ public class ParallaxQuadUV : ParallaxObject
         // Offset UVs
         float amount = 1 / distanceFromCamera;
         quadMaterial.SetTextureOffset("_MainTex", (Vector2)relativeTo.transform.position * amount + offset);
-        Debug.Log((Vector2)relativeTo.transform.position * amount + offset);
 
         // Set quad position to render in front of camera
         transform.position = new Vector3(relativeTo.transform.position.x, 
