@@ -61,6 +61,7 @@ public class ShipGun : MonoBehaviour
 
         shotBehaviour.Position = origin;
         shotBehaviour.Direction = direction;
+        shotBehaviour.SetRotation(direction);
         shotBehaviour.ExtraVelocity = extraVelocity;
         shotBehaviour.Damage = shipGunData.Damage;
 
