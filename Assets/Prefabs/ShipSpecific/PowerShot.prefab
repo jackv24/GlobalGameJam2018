@@ -95,7 +95,7 @@ MonoBehaviour:
   velocity: 35
 --- !u!114 &114601631197101578
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458115159824940}
@@ -112,7 +112,7 @@ MonoBehaviour:
   _assetGuid: 873bee5f9f578d34e8939be1c165bfdd
 --- !u!114 &114675999604374894
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458115159824940}
@@ -151,8 +151,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1248760549
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e6879ffd296f25f469f86ae941512a58, type: 3}
   m_Color: {r: 0, g: 1, b: 0.17241383, a: 1}
