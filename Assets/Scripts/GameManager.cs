@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     private uint resourceCount = 1000;
 
     [SerializeField]
+    private ParticleSystem largeResourceCacheParticles;
+
+    [SerializeField]
     private Vector2 gameWorldDimensions;
 
     [SerializeField]
@@ -192,8 +195,12 @@ public class GameManager : MonoBehaviour
                 // Spawn tracker for large clusters
                 if (largeCluster && i == 0)
                 {
-                    Debug.Log(string.Concat("Spawning a ResourcePinger at ", resourceObject.transform.position));
+                    resourceScript.Value = 20;
+                    resourceObject.transform.localScale = Vector3.one * resourceScript.Value / 12;
+
                     var pinger = resourceObject.AddComponent<ResourcePinger>();
+                    pinger.particlePrefab = largeResourceCacheParticles;
+
                     pinger.OnDespawn += RemovePingerTracker;
                     resourcePingObjects.Add(pinger);
                 }

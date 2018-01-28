@@ -153,7 +153,7 @@ public class ShipControls : Controllable
         if (buttonState == ButtonState.WasPressed
             && Time.time - lastPingTime >= transmissionPingCooldown)
         {
-            arrowCamera.StartPing(transform.position, transmissionPingResourceRadius, resourceArrowPrefab);
+            arrowCamera.StartResourcePing(transform.position, transmissionPingResourceRadius, resourceArrowPrefab);
             
             // Raise ping event
             if (OnTransmissionPing != null)
