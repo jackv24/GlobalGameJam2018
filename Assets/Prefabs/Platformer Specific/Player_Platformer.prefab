@@ -225,7 +225,7 @@ MonoBehaviour:
     volume: 1
 --- !u!114 &114317571724778090
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1865883108120778}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputDeadZone: 0.2
   moveSpeed: 8
-  jumpForce: 15
+  jumpForce: 20
   groundedDistance: 0.1
   groundLayer:
     serializedVersion: 2
@@ -257,7 +257,7 @@ MonoBehaviour:
   widthSkin: 0.1
 --- !u!114 &114417909539783558
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998820672914462}
@@ -286,7 +286,7 @@ MonoBehaviour:
   animator: {fileID: 95816461962490604}
 --- !u!114 &114541988995905246
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998820672914462}
@@ -305,7 +305,7 @@ MonoBehaviour:
   _assetGuid: 89a33eb927a9ae847ab338fdeb73cb76
 --- !u!114 &114746187778114378
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458637049697170}
