@@ -23,6 +23,7 @@ public class PlayerActions : PlayerActionSet
 
     public PlayerAction Jump;
     public PlayerAction Shoot;
+    public PlayerAction Dash;
 
     public PlayerActions()
     {
@@ -42,6 +43,7 @@ public class PlayerActions : PlayerActionSet
 
         Jump = CreatePlayerAction("Jump");
         Shoot = CreatePlayerAction("Shoot");
+        Dash = CreatePlayerAction("Dash");
     }
 
     public void SetupBindings(bool keyboard)
@@ -61,6 +63,7 @@ public class PlayerActions : PlayerActionSet
 
             Jump.AddDefaultBinding(Key.Space);
             Shoot.AddDefaultBinding(Key.Shift);
+            Dash.AddDefaultBinding(Key.E);
         }
         else
         {
@@ -82,6 +85,9 @@ public class PlayerActions : PlayerActionSet
             Jump.AddDefaultBinding(InputControlType.Action1);
             Shoot.AddDefaultBinding(InputControlType.RightTrigger);
             Shoot.AddDefaultBinding(InputControlType.RightBumper);
+
+            Dash.AddDefaultBinding(InputControlType.LeftBumper);
+            Dash.AddDefaultBinding(InputControlType.LeftTrigger);
         }
     }
 

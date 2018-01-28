@@ -302,7 +302,7 @@ EdgeCollider2D:
   - {x: 0.8576152, y: 2.7529974}
 --- !u!114 &114005600356317290
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944417790284114}
@@ -314,7 +314,7 @@ MonoBehaviour:
   _guid: 2b99f9c6-aad4-46f8-9ee9-bc08e89b27dc
 --- !u!114 &114406234888262068
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271213742092510}
@@ -326,7 +326,7 @@ MonoBehaviour:
   _guid: 2579566b-a072-436b-88e7-632b81c871e7
 --- !u!114 &114548188116143004
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472297662884002}
@@ -338,7 +338,7 @@ MonoBehaviour:
   _guid: d6a9b9b9-b85d-474b-9dc7-fd46b53873ba
 --- !u!114 &114752254725425672
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405978507970056}
@@ -359,12 +359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1175d7443c2a443a585b71bbe9b44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 4085032654995116}
+  spawnPoint1: {fileID: 4085032654995116}
+  spawnPoint2: {fileID: 4658979839693364}
   owner: {fileID: 0}
-  otherShipInterior: {fileID: 0}
 --- !u!114 &114901216356206004
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075300912583358}
@@ -376,7 +376,7 @@ MonoBehaviour:
   _guid: fa3f64a0-531d-4721-a9fc-d6818b495087
 --- !u!114 &114932490412519366
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405978507970056}
@@ -398,7 +398,7 @@ MonoBehaviour:
   _assetGuid: c497ccef55aecf0408403ced7088a7de
 --- !u!114 &114998535931059806
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1887792774056834}
@@ -437,8 +437,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -949815599
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ea35eff080d757f4e82202a2bde3f5c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

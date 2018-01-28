@@ -23,6 +23,11 @@ public class Controllable : MonoBehaviour
     {
 
     }
+
+    public virtual void Dash(ButtonState buttonState)
+    {
+
+    }
 }
 
 public enum ButtonState

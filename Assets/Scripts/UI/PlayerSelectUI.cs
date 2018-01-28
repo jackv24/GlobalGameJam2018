@@ -84,7 +84,7 @@ public class PlayerSelectUI : MonoBehaviour
         }
         else if (boundDevices.Count > 0)
         {
-            if (boundDevices[0].CommandWasPressed)
+            if (boundDevices[0].Action1.WasPressed)
             {
                 GameManager.Instance.StartGame();
 

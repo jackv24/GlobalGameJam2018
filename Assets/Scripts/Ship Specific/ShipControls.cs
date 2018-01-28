@@ -52,6 +52,19 @@ public class ShipControls : Controllable
 
     [SerializeField]
     private Transform shotOrigin;
+
+    [SerializeField]
+    private float dashCooldown = 2.0f;
+    private float nextDashTime;
+    public float dashForce = 20.0f;
+    private bool shouldDash = false;
+
+    public bool CanDock { get { return canDock; } }
+    private bool canDock = false;
+
+    public float dockTime = 1.0f;
+    public float stopDockTime;
+
     #endregion
 
     private void Awake()
@@ -184,6 +197,14 @@ public class ShipControls : Controllable
                 Physics2D.IgnoreCollision(shot.Collider, collider);
         }
     }
+
+    public override void Dash(ButtonState buttonState)
+    {
+        if(buttonState == ButtonState.IsPressed)
+        {
+            shouldDash = true;
+        }
+    }
     #endregion
 
     /// <summary>
@@ -219,5 +240,26 @@ public class ShipControls : Controllable
             desiredVelocity = desiredVelocity.normalized * maximumVelocity;
 
         rigidbody2D.velocity = desiredVelocity;
+
+        if(shouldDash)
+        {
+            shouldDash = false;
+
+            if(Time.time >= nextDashTime)
+            {
+                nextDashTime = Time.time + dashCooldown;
+
+                stopDockTime = Time.time + dockTime;
+                canDock = true;
+
+                rigidbody2D.AddForce(rigidbody2D.transform.up * dashForce, ForceMode2D.Impulse);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (canDock && Time.time > stopDockTime)
+            canDock = false;
     }
 }

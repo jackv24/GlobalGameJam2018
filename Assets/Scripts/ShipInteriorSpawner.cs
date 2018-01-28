@@ -12,6 +12,13 @@ public class ShipInteriorSpawner : MonoBehaviour
     [HideInInspector]
     public bool letSpawn = true;
 
+    private ShipControls shipControls;
+
+    private void Awake()
+    {
+        shipControls = GetComponent<ShipControls>();
+    }
+
     private void OnEnable()
     {
         letSpawn = true;
@@ -21,7 +28,7 @@ public class ShipInteriorSpawner : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (letSpawn && Time.time >= nextBoardTime)
+        if (letSpawn && Time.time >= nextBoardTime && shipControls.CanDock)
         {
             ShipInteriorSpawner other = collision.collider.GetComponent<ShipInteriorSpawner>();
             if (other && other.letSpawn)
@@ -38,18 +45,18 @@ public class ShipInteriorSpawner : MonoBehaviour
                 scale.x *= flip;
                 obj.transform.localScale = scale;
 
-                GameObject otherObj = Instantiate(other.shipInteriorPrefab, other.transform.parent);
-                otherObj.transform.position = transform.position;
+                //GameObject otherObj = Instantiate(other.shipInteriorPrefab, other.transform.parent);
+                //otherObj.transform.position = transform.position;
 
-                scale = otherObj.transform.localScale;
-                scale.x *= -1 * flip;
-                otherObj.transform.localScale = scale;
+                //scale = otherObj.transform.localScale;
+                //scale.x *= -1 * flip;
+                //otherObj.transform.localScale = scale;
 
                 ShipInterior interior = obj.GetComponent<ShipInterior>();
-                ShipInterior otherInterior = otherObj.GetComponent<ShipInterior>();
+                //ShipInterior otherInterior = otherObj.GetComponent<ShipInterior>();
 
-                interior.otherShipInterior = otherInterior;
-                otherInterior.otherShipInterior = interior;
+                //interior.otherShipInterior = otherInterior;
+                //otherInterior.otherShipInterior = interior;
 
                 ShipInterior.DestroyEvent destroyEvent = null;
                 destroyEvent = (ShipInterior self) =>
@@ -61,13 +68,18 @@ public class ShipInteriorSpawner : MonoBehaviour
                 };
 
                 interior.OnDisabled += destroyEvent;
-                otherInterior.OnDisabled += destroyEvent;
+                //otherInterior.OnDisabled += destroyEvent;
 
                 PlayerInput selfInput = GetComponentInParent<PlayerInput>();
                 PlayerInput otherInput = collision.gameObject.GetComponentInParent<PlayerInput>();
 
                 interior.owner = selfInput;
-                otherInterior.owner = otherInput;
+                //otherInterior.owner = otherInput;
+
+                PlatformerController platformer1 = selfInput.GetComponentInChildren<PlatformerController>(true);
+                PlatformerController platformer2 = otherInput.GetComponentInChildren<PlatformerController>(true);
+
+                interior.PlacePlayers(platformer1.transform, platformer2.transform);
 
                 selfInput.SwitchMode();
                 otherInput.SwitchMode();

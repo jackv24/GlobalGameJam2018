@@ -240,7 +240,7 @@ EdgeCollider2D:
   - {x: 3.3401134, y: 4.432026}
 --- !u!114 &114035605377494356
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964222287529054}
@@ -252,7 +252,7 @@ MonoBehaviour:
   _guid: 7a632bbd-c5a1-4812-9290-ec961bb91cfd
 --- !u!114 &114166993682033116
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583467041704292}
@@ -264,7 +264,7 @@ MonoBehaviour:
   _guid: 30137bbd-a9e5-4540-86ed-bf4d932b7d32
 --- !u!114 &114180608050379932
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752568939736148}
@@ -276,7 +276,7 @@ MonoBehaviour:
   _guid: d14ba749-f4e7-49ef-903e-56d47afe6820
 --- !u!114 &114290510900937846
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465369517102736}
@@ -288,7 +288,7 @@ MonoBehaviour:
   _guid: ffde3d87-3713-4ecf-9723-d1fcabda49ad
 --- !u!114 &114573545890946244
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752568939736148}
@@ -309,7 +309,7 @@ MonoBehaviour:
   _assetGuid: e5b767dfc75b55e4583477427cb1c09f
 --- !u!114 &114594208774202178
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427413665976304}
@@ -330,9 +330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1175d7443c2a443a585b71bbe9b44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 4940334383259832}
+  spawnPoint1: {fileID: 4940334383259832}
+  spawnPoint2: {fileID: 4377361250594004}
   owner: {fileID: 0}
-  otherShipInterior: {fileID: 0}
 --- !u!212 &212545841119455704
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -362,8 +362,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -949815599
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c039cb6596c77454793da8b971267999, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

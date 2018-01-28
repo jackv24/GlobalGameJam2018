@@ -52,6 +52,7 @@ public class PlayerInput : MonoBehaviour
             controlling.Look(lookInput);
             controlling.Jump(jumpButtonState);
             controlling.Shoot(shootButtonState);
+            controlling.Dash(GetButtonState(playerActions.Dash));
 
             followTarget.transform.position = controlling.transform.position;
         }
@@ -64,7 +65,7 @@ public class PlayerInput : MonoBehaviour
             platformerObj = Instantiate(loadout.platformerPrefab, transform);
             platformerObj.name = loadout.platformerPrefab.name;
 
-            controlling = platformerObj.GetComponent<Controllable>();
+            controlling = platformerObj.GetComponentInChildren<Controllable>();
         }
 
         if (loadout.shipPrefab)
@@ -115,7 +116,6 @@ public class PlayerInput : MonoBehaviour
         }
         else // Do not idsable ships while in platformer
         {
-            platformerObj.SetActive(true);
             controlling = platformerObj.GetComponentInChildren<Controllable>(true);
 
             cameraRender.SetRenderPlatformer();
@@ -124,8 +124,6 @@ public class PlayerInput : MonoBehaviour
             ShipInterior shipInterior = GetComponentInChildren<ShipInterior>(true);
             if(shipInterior)
             {
-                platformerObj.transform.position = shipInterior.spawnPoint.position;
-
                 Rigidbody2D body = platformerObj.GetComponentInChildren<Rigidbody2D>(true);
                 if (body && body.gameObject != platformerObj)
                 {
@@ -137,6 +135,9 @@ public class PlayerInput : MonoBehaviour
                     body.velocity = Vector2.zero;
             }
         }
+
+        if (controlling)
+            controlling.gameObject.SetActive(true);
     }
 
     public void DieReset(bool killShip = true)

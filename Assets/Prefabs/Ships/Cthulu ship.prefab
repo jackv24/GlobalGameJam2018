@@ -315,6 +315,10 @@ MonoBehaviour:
   resourceArrowPrefab: {fileID: 0}
   defaultWeapon: {fileID: 0}
   shotOrigin: {fileID: 4876549329841694}
+  dashCooldown: 2
+  dashForce: 100
+  dockTime: 1
+  stopDockTime: 0
 --- !u!114 &114629457593359632
 MonoBehaviour:
   m_ObjectHideFlags: 1
