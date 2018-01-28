@@ -66,7 +66,7 @@ MonoBehaviour:
     type: 2}
 --- !u!114 &114609027450781682
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076481854599908}
@@ -83,7 +83,7 @@ MonoBehaviour:
   _assetGuid: 96f0853741fc04649810d38ff45d9d71
 --- !u!114 &114621782088871302
 MonoBehaviour:
-  m_ObjectHideFlags: 11
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076481854599908}
@@ -132,4 +132,8 @@ MonoBehaviour:
   - platformerPrefab: {fileID: 1220452413515850, guid: 241f5407f936d6a4683c3c5ad30fdf5d,
       type: 2}
     shipPrefab: {fileID: 1155370325066178, guid: 8d6c08dda9681bb44aae8657ce687d0d,
+      type: 2}
+  - platformerPrefab: {fileID: 1300461171853036, guid: f77df4a1151a47f4998be16991e090e0,
+      type: 2}
+    shipPrefab: {fileID: 1453392183275888, guid: 779e57c38ce40bd4eb126f156762c93e,
       type: 2}
