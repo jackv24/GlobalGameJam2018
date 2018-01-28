@@ -73,7 +73,7 @@ public class ShipInteriorSpawner : MonoBehaviour
                 PlayerInput selfInput = GetComponentInParent<PlayerInput>();
                 PlayerInput otherInput = collision.gameObject.GetComponentInParent<PlayerInput>();
 
-                interior.owner = selfInput;
+                //interior.owner = selfInput;
                 //otherInterior.owner = otherInput;
 
                 PlatformerController platformer1 = selfInput.GetComponentInChildren<PlatformerController>(true);
@@ -83,6 +83,39 @@ public class ShipInteriorSpawner : MonoBehaviour
 
                 selfInput.SwitchMode();
                 otherInput.SwitchMode();
+
+                PlatformerStats stats1 = platformer1.GetComponent<PlatformerStats>();
+                PlatformerStats stats2 = platformer2.GetComponent<PlatformerStats>();
+
+                PlatformerStats.DeathDelegate healthDelegate = null;
+                healthDelegate = (PlatformerStats stats) =>
+                {
+                    bool done = false;
+
+                    if (stats == stats1)
+                    {
+                        
+                        done = true;
+                    }
+                    else if (stats == stats2)
+                    {
+                        
+                        done = true;
+                    }
+
+                    if (done)
+                    {
+                        selfInput.SwitchMode();
+                        otherInput.SwitchMode();
+
+                        Destroy(interior.gameObject);
+
+                        stats1.OnDeath -= healthDelegate;
+                        stats2.OnDeath -= healthDelegate;
+                    }
+                };
+                stats1.OnDeath += healthDelegate;
+                stats2.OnDeath += healthDelegate;
             }
         }
     }

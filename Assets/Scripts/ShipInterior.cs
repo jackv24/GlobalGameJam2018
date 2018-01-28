@@ -10,16 +10,8 @@ public class ShipInterior : MonoBehaviour
     public Transform spawnPoint1;
     public Transform spawnPoint2;
 
-    public PlayerInput owner;
-
     void OnDisable()
     {
-        //if(otherShipInterior)
-        //    Destroy(otherShipInterior.gameObject);
-
-        if (owner)
-            owner.SwitchMode();
-
         if (OnDisabled != null)
             OnDisabled(this);
     }

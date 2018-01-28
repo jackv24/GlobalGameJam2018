@@ -174,6 +174,9 @@ public class PlayerInput : MonoBehaviour
         shipObj.SetActive(false);
         shipObj.SetActive(true);
 
-        platformerObj.SetActive(false);
+        PlatformerController platform = platformerObj.GetComponentInChildren<PlatformerController>(true);
+        platform.gameObject.SetActive(false);
+
+        controlling = shipObj.GetComponent<Controllable>();
     }
 }
