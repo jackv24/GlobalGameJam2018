@@ -214,7 +214,7 @@ MonoBehaviour:
   shipGunData: {fileID: 11400000, guid: 478d32cc47bf38b4486cbc4bdf040f42, type: 2}
 --- !u!114 &114194496859034220
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059445150974662}
@@ -238,7 +238,7 @@ MonoBehaviour:
   maxHealth: 100
 --- !u!114 &114493722341400172
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1453392183275888}
@@ -294,7 +294,7 @@ MonoBehaviour:
   letSpawn: 1
 --- !u!114 &114724535512996562
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 11
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1453392183275888}
@@ -333,8 +333,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1966389711
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1898fa22c75ac614c85ed64685efea43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
