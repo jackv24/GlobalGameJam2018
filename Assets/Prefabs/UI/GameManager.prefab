@@ -121,13 +121,13 @@ MonoBehaviour:
   playerLoadouts:
   - platformerPrefab: {fileID: 1998820672914462, guid: 89a33eb927a9ae847ab338fdeb73cb76,
       type: 2}
-    shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39,
+    shipPrefab: {fileID: 1331503130445392, guid: 7b87aa1af3132934792f2090c590b74c,
       type: 2}
   - platformerPrefab: {fileID: 1220452413515850, guid: 37e975f5365ff8747a74625aa9902b93,
       type: 2}
-    shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39,
+    shipPrefab: {fileID: 1792907347465172, guid: 52d7e13ee3cb92c46b2eb34e8f6186ef,
       type: 2}
   - platformerPrefab: {fileID: 1220452413515850, guid: 241f5407f936d6a4683c3c5ad30fdf5d,
       type: 2}
-    shipPrefab: {fileID: 1219551978645792, guid: e05e6280631a79047810b9856fa23f39,
+    shipPrefab: {fileID: 1155370325066178, guid: 8d6c08dda9681bb44aae8657ce687d0d,
       type: 2}
